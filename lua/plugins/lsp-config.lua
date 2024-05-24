@@ -29,7 +29,13 @@ return {
       lspconfig.lua_ls.setup({})
       lspconfig.java_language_server.setup({})
       lspconfig.kotlin_language_server.setup({})
-      lspconfig.ltex.setup({})
+      lspconfig.ltex.setup({
+        settings = {
+          ltex = {
+            language = 'de-DE',
+          },
+        },
+      })
       lspconfig.marksman.setup({})
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {}) -- Show docs
