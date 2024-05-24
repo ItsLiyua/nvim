@@ -5,6 +5,11 @@ local setup = function()
         visible = true,
         hide_dotfiles = false,
         hide_gitignored = false,
+        hide_by_name = {
+          '.git',
+          '.DS_Store',
+          'thumbs.db',
+        },
       },
     },
   })
