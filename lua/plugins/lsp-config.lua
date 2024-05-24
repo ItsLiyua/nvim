@@ -15,10 +15,8 @@ return {
           'lua_ls', -- Lua
           'java_language_server', -- Java
           'kotlin_language_server', -- Kotlin
-          'html', -- HTML
-          'cssls', -- CSS
-          'tsserver', -- Javascript
           'ltex', -- LaTeX
+          'marksman', -- Markdown
         },
       })
     end,
@@ -30,6 +28,10 @@ return {
       local lspconfig = require('lspconfig')
       lspconfig.lua_ls.setup({})
       lspconfig.java_language_server.setup({})
+      lspconfig.kotlin_language_server.setup({})
+      lspconfig.ltex.setup({})
+      lspconfig.marksman.setup({})
+
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {}) -- Show docs
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {}) -- Show definition
       vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {}) -- Show declaration
@@ -37,3 +39,5 @@ return {
     end,
   }
 }
+
+
