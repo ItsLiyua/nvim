@@ -1,5 +1,9 @@
 return {
   {
+    'onsails/lspkind.nvim',
+    name = 'lspkind',
+  },
+  {
     'hrsh7th/cmp-nvim-lsp',
     name = 'cmp-nvim-lsp',
   },
@@ -30,6 +34,7 @@ return {
       -- Set up nvim-cmp.
       local cmp = require('cmp')
       local luasnip = require('luasnip')
+
       require('luasnip.loaders.from_vscode').lazy_load()
 
       cmp.setup({
@@ -78,7 +83,32 @@ return {
           { name = 'luasnip' }, -- For luasnip users.
         }, {
           { name = 'buffer' },
-        })
+        }),
+        window = {
+          completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+          },
+        },
+        formatting = {
+          menu = ({
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[Latex]",
+          }),
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+            return kind
+          end,
+        },
       })
     end,
   },
