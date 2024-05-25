@@ -7,18 +7,28 @@ return {
     end,
   },
   {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    name = 'mason-installer',
+    config = function()
+      require('mason-tool-installer').setup({
+        ensure_installed = {
+          'lua_ls',                 -- Lua LSP
+          'stylua',                 -- Lua Formatter
+          'java_language_server',   -- Java LSP
+          'kotlin_language_server', -- Kotlin LSP
+          'ktlint',                 -- Kotlin Linter / Formatter
+          'ltex',                   -- LaTeX LSP
+          'marksman',               -- Markdown LSP
+        },
+        auto_update = true,
+      })
+    end
+  },
+  {
     'williamboman/mason-lspconfig.nvim',
     name = 'meson-lspconfig',
     config = function()
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          'lua_ls', -- Lua
-          'java_language_server', -- Java
-          'kotlin_language_server', -- Kotlin
-          'ltex', -- LaTeX
-          'marksman', -- Markdown
-        },
-      })
+      require('mason-lspconfig').setup()
     end,
   },
   {
@@ -38,12 +48,23 @@ return {
       })
       lspconfig.marksman.setup({})
 
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {}) -- Show docs
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {}) -- Show definition
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {}) -- Show declaration
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})                         -- Show docs
+      vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})           -- Show definition
+      vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, {})          -- Show declaration
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {}) -- Code Adction
+      vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, {})               -- Code Formatting
     end,
-  }
+  },
+  {
+    'nvimtools/none-ls.nvim',
+    name = 'nonels',
+    config = function()
+      local null_ls = require('null-ls')
+      null_ls.setup({
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.ktlint,
+        null_ls.builtins.diagnostics.ktlint,
+      })
+    end,
+  },
 }
-
-
