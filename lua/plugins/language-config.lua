@@ -35,18 +35,20 @@ return {
     'neovim/nvim-lspconfig',
     name = 'nvim-lspconfig',
     config = function()
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup({})
-      lspconfig.java_language_server.setup({})
-      lspconfig.kotlin_language_server.setup({})
+      lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.java_language_server.setup({ capabilities = capabilities })
+      lspconfig.kotlin_language_server.setup({ capabilities = capabilities })
       lspconfig.ltex.setup({
+        capabilities = capabilities,
         settings = {
           ltex = {
             language = 'de-DE',
           },
         },
       })
-      lspconfig.marksman.setup({})
+      lspconfig.marksman.setup({ capabilities = capabilities })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})                         -- Show docs
       vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})           -- Show definition
