@@ -14,9 +14,15 @@ return {
         ensure_installed = {
           'lua_ls',                 -- Lua LSP
           'stylua',                 -- Lua Formatter
+
           'java_language_server',   -- Java LSP
           'kotlin_language_server', -- Kotlin LSP
           'ktlint',                 -- Kotlin Linter / Formatter
+
+          'html', -- HTML LSP
+          'cssls', -- CSS LSP
+          'prettierd',               -- CSS Formatter
+
           'ltex',                   -- LaTeX LSP
           'marksman',               -- Markdown LSP
         },
@@ -40,6 +46,8 @@ return {
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.java_language_server.setup({ capabilities = capabilities })
       lspconfig.kotlin_language_server.setup({ capabilities = capabilities })
+      lspconfig.html.setup({ capabilities = capabilities })
+      lspconfig.cssls.setup({ capabilities = capabilities })
       lspconfig.ltex.setup({
         capabilities = capabilities,
         settings = {
@@ -66,6 +74,7 @@ return {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.ktlint,
         null_ls.builtins.diagnostics.ktlint,
+        null_ls.builtins.formatting.prettierd,
       })
     end,
   },
