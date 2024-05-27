@@ -22,6 +22,6 @@ return {
         },
       },
     })
-    vim.keymap.set('n', '<C-n>', ':Neotree focus<CR>')
+    vim.keymap.set('n', '<leader>n', ':Neotree focus<CR>')
   end
 }

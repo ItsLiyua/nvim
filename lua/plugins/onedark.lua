@@ -1,30 +1,28 @@
-local setup = function()
-  require('onedark').setup({
-    style = 'warmer',
-    transparent = false,
-    ending_tildes = true,
-    code_style = {
-      comments = 'italic',
-      keywords = 'bold',
-      functions = 'italic',
-      strings = 'none',
-      variables = 'none'
-    },
-    lualine = {
-      transparent = false,
-    },
-    diagnostics = {
-      darker = true,
-      undercurl = true,
-      background = true,
-    }
-  })
-require('onedark').load()
-end
-
-return { 
-  'navarasu/onedark.nvim', 
-  name = 'onedark', 
+return {
+  'navarasu/onedark.nvim',
+  name = 'onedark',
   lazy = false,
-  config = setup,
+  config = function()
+    require('onedark').setup({
+      style = 'warmer',
+      transparent = false,
+      ending_tildes = true,
+      code_style = {
+        comments = 'italic',
+        keywords = 'bold',
+        functions = 'italic',
+        strings = 'none',
+        variables = 'none'
+      },
+      lualine = {
+        transparent = false,
+      },
+      diagnostics = {
+        darker = true,
+        undercurl = true,
+        background = true,
+      }
+    })
+    require('onedark').load()
+  end
 }
