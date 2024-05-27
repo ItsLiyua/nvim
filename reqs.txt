@@ -1,3 +1,5 @@
 maven
+jdk8-openjdk
+unzip
 npm
 texlive
