@@ -8,5 +8,7 @@ vim.cmd('set termguicolors')
 vim.cmd('set number')
 vim.cmd('set relativenumber')
 
+vim.cmd('inoremap jk <ESC>')
+
 vim.g.mapleader = ' '
 

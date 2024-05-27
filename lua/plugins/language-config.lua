@@ -19,9 +19,9 @@ return {
           'kotlin_language_server', -- Kotlin LSP
           'ktlint',                 -- Kotlin Linter / Formatter
 
-          'html', -- HTML LSP
-          'cssls', -- CSS LSP
-          'prettierd',               -- CSS Formatter
+          'html',                   -- HTML LSP
+          'cssls',                  -- CSS LSP
+          'prettierd',              -- CSS Formatter
 
           'ltex',                   -- LaTeX LSP
           'marksman',               -- Markdown LSP
