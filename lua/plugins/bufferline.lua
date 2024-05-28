@@ -18,6 +18,7 @@ return {
         },
       },
       highlights = {
+        tab_selected = { sp = '#E06C75' },
         indicator_selected = { sp = '#E06C75' },
         buffer_selected = { sp = '#E06C75' },
         close_button_selected = { sp = '#E06C75' },
@@ -25,7 +26,7 @@ return {
         modified_selected = { sp = '#E06C75' },
       }
     })
-    vim.keymap.set('n', '<Tab>', ':bn<CR>')
-    vim.keymap.set('n', '<S-Tab>', ':bp<CR>')
+    vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>')
+    vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>')
   end
 }
