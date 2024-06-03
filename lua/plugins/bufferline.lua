@@ -23,6 +23,7 @@ return {
         close_button_selected = { sp = '#E06C75' },
         numbers_selected = { sp = '#E06C75' },
         modified_selected = { sp = '#E06C75' },
+        info_selected = { sp = '#E06C75' },
       }
     })
     vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>')
