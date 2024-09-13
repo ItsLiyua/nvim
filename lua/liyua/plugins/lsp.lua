@@ -1,6 +1,7 @@
 local M = {}
 M.ensure_installed = {
-    "lua_ls"
+  "lua_ls",
+  "kotlin_language_server"
 }
 
 return {
