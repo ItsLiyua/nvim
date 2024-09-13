@@ -10,6 +10,7 @@ return {
       { "<leader>s", group = "Split..." },
       { "<leader>t", group = "Tabs..." },
       { "<leader>c", group = "Code..." },
+      { "<leader>w", group = "Session..." }
     })
   end
 }
