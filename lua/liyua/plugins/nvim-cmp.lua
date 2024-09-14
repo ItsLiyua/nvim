@@ -5,6 +5,7 @@ return {
     "hrsh7th/cmp-buffer", -- source for text in buffer
     "hrsh7th/cmp-path", -- source for file system paths
     { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+    "micangl/cmp-vimtex",
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim"
@@ -51,7 +52,7 @@ return {
             fallback()
           end
         end,
-        ["S-Tab"] = function(fallback)
+        ["<S-Tab>"] = function(fallback)
           if luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
           else
@@ -61,15 +62,17 @@ return {
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-        { name = "nvim_lsp"},
+        { name = "vimtex" },
+        { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
-        { name = "buffer" }, -- text within current buffer
+        { name = "buffer", keyword_length = 5 }, -- text within current buffer
         { name = "path" }, -- file system paths
       }),
       formatting = {
         format = require("lspkind").cmp_format {
           with_text = true,
           menu = {
+            vimtex = "[tex]",
             buffer = "[buf]",
             nvim_lsp = "[LSP]",
             path = "[path]",
