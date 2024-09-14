@@ -4,9 +4,10 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
     "hrsh7th/cmp-path", -- source for file system paths
-    "L3MON4D3/LuaSnip",
+    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
+    "onsails/lspkind.nvim"
   },
   config = function()
     local cmp = require("cmp")
@@ -30,8 +31,33 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = function(fallback)
+          if cmp.visible() then
+            if not cmp.confirm({ select = false }) then
+              fallback()
+            end
+          elseif luasnip.locally_jumpable(1) then
+            luasnip.jump(1)
+          else
+            fallback()
+          end
+        end,
+        ["<Tab>"] = function(fallback)
+          if cmp.visible() then
+            cmp.confirm({ select = true })
+          elseif luasnip.locally_jumpable(1) then
+            luasnip.jump(1)
+          else
+            fallback()
+          end
+        end,
+        ["S-Tab"] = function(fallback)
+          if luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
@@ -40,6 +66,21 @@ return {
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
       }),
+      formatting = {
+        format = require("lspkind").cmp_format {
+          with_text = true,
+          menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            path = "[path]",
+            luasnip = "[snip]"
+          }
+        }
+      },
+      experimental = {
+        native_menu = false,
+        ghost_text = true
+      }
     })
   end,
 }
