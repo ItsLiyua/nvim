@@ -1,7 +1,7 @@
 return {
   "lervag/vimtex",
   lazy = true,
-  ft = { "latex" },
+  ft = { "tex" },
   init = function()
     vim.g.vimtex_view_method = "zathura"
   end
