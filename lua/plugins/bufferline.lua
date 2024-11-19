@@ -4,5 +4,9 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   lazy = true,
   event = { "BufReadPre", "InsertEnter" },
-  opts = {},
+  opts = {
+    options = {
+      seperator_style = "slant",
+    },
+  },
 }

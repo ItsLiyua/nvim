@@ -4,8 +4,32 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   lazy = true,
+  config = function()
+    local telescope = require("telescope")
+    local actions = require("telescope.actions")
+
+    telescope.setup({
+      defaults = {
+        path_display = { "smart" },
+        mappings = {
+          i = {
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<C-j>"] = actions.move_selection_next,
+          }
+        }
+      },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown({}),
+        },
+      },
+    })
+    telescope.load_extension("ui-select")
+    telescope.load_extension("fzf")
+  end,
   keys = {
     {
       "<leader>ff",
@@ -29,15 +53,4 @@ return {
       desc = "List all buffers",
     },
   },
-  config = function()
-    local telescope = require("telescope")
-    telescope.setup({
-      extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown({}),
-        },
-      },
-    })
-    telescope.load_extension("ui-select")
-  end,
 }

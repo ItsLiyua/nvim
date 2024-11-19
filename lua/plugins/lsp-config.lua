@@ -105,7 +105,7 @@ return {
         desc = "Show code actions",
       },
       {
-        "<leader>f",
+        "<leader>gf",
         function()
           vim.lsp.buf.format({ async = true })
         end,
