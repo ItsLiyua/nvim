@@ -7,6 +7,7 @@ return {
         "kotlin",
         "java",
         "hyprlang",
+        "latex",
       },
       highlight = { enable = true },
       indent = { enable = true },
