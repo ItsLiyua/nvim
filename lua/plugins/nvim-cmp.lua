@@ -3,9 +3,14 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+    local lspkind = require("lspkind")
+
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
+      completion = {
+        completeopt = "menu,menuone,preview,noselect",
+      },
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
@@ -14,6 +19,18 @@ return {
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
+      },
+      sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
+      }),
+      formatting = {
+        format = lspkind.cmp_format({
+          maxwidth = 50,
+          ellipsis_char = "...",
+        }),
       },
       mapping = cmp.mapping.preset.insert({
         ["<CR>"] = cmp.mapping(function(fallback)
@@ -71,22 +88,17 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
       }),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-      }, {
-        { name = "buffer" },
-      }),
     })
   end,
   lazy = true,
   event = { "BufReadPre", "InsertEnter" },
   dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
     "L3MON4D3/LuaSnip",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets",
-      "hrsh7th/cmp-nvim-lsp",
-    },
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+    "onsails/lspkind.nvim",
   },
 }
