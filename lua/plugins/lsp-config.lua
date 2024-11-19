@@ -5,16 +5,53 @@ return {
       ensure_installed = {
         -- Lua
         "lua_ls",
+        "stylua",
 
         -- Kotlin
-        "ktlint",
         "kotlin_language_server",
+        "ktlint",
+
+        -- Java
+        "jdtls",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
   },
   {
     "neovim/nvim-lspconfig",
+    config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local lspconfig = require("lspconfig")
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.kotlin_language_server.setup({
+        capabilities = capabilities
+      })
+    end,
+    dependencies = {
+      {
+        "nvimtools/none-ls.nvim",
+        config = function()
+          local none_ls = require("null-ls")
+          none_ls.setup({
+            sources = {
+              none_ls.builtins.formatting.stylua,
+              none_ls.builtins.formatting.ktlint.with({
+                extra_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
+              }),
+            },
+          })
+        end
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { { "williamboman/mason.nvim", config = true, } },
+      },
+      {
+        "hrsh7th/cmp-nvim-lsp"
+      }
+    },
     lazy = true,
     ft = { "lua", "kotlin" },
     keys = {
@@ -73,31 +110,6 @@ return {
           vim.lsp.buf.format({ async = true })
         end,
         desc = "Format file",
-      },
-    },
-    config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
-      lspconfig.kotlin_language_server.setup({})
-    end,
-    dependencies = {
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          local none_ls = require("null-ls")
-          none_ls.setup({
-            sources = {
-              none_ls.builtins.formatting.stylua,
-              none_ls.builtins.formatting.ktlint.with({
-                extra_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
-              }),
-            },
-          })
-        end
-      },
-      {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = { { "williamboman/mason.nvim", config = true, } },
       },
     },
   },
