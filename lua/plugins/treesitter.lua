@@ -6,6 +6,7 @@ return {
         "lua",
         "kotlin",
         "java",
+        "hyprlang",
       },
       highlight = { enable = true },
       indent = { enable = true },
