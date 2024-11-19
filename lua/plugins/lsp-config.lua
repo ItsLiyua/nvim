@@ -1,19 +1,14 @@
 return {
   {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = {
-        "lua_ls",
-        "kotlin_language_server",
-      },
-    },
-    dependencies = { { "williamboman/mason.nvim", config = true, } },
-  },
-  {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = {
+        -- Lua
+        "lua_ls",
+
+        -- Kotlin
         "ktlint",
+        "kotlin_language_server",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
@@ -86,18 +81,24 @@ return {
       lspconfig.kotlin_language_server.setup({})
     end,
     dependencies = {
-      "nvimtools/none-ls.nvim",
-      config = function()
-        local none_ls = require("null-ls")
-        none_ls.setup({
-          sources = {
-            none_ls.builtins.formatting.stylua,
-            none_ls.builtins.formatting.ktlint.with({
-              extra_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
-            }),
-          },
-        })
-      end
+      {
+        "nvimtools/none-ls.nvim",
+        config = function()
+          local none_ls = require("null-ls")
+          none_ls.setup({
+            sources = {
+              none_ls.builtins.formatting.stylua,
+              none_ls.builtins.formatting.ktlint.with({
+                extra_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
+              }),
+            },
+          })
+        end
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { { "williamboman/mason.nvim", config = true, } },
+      },
     },
   },
 }
