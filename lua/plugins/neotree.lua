@@ -7,8 +7,16 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
   lazy = true,
-  keys = { "<C-n>", "<cmd>:Neotree filesystem reveal left<CR>", desc = "NeoTree" },
-	config = function()
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-	end,
+  keys = { { "<C-n>", "<cmd>:Neotree filesystem reveal left<CR>", desc = "NeoTree" } },
+  cmd = { "Neotree" },
+  opts = {
+    event_handlers = {
+      {
+        event = "file_open_requested",
+        handler = function()
+          require("neo-tree.command").execute({ action = "close" })
+        end
+      },
+    },
+  }
 }
