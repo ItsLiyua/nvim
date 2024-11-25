@@ -15,7 +15,10 @@ return {
         "jdtls",
 
         -- Hyprland Configs
-        "hyprls"
+        "hyprls",
+
+        -- LaTeX
+        "ltex-ls",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
@@ -25,6 +28,8 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
       local lspconfig = require("lspconfig")
       local mason_lspconfig = require("mason-lspconfig")
 
@@ -33,11 +38,8 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
-          -- Buffer local mappings.
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts = { buffer = ev.buf, silent = true }
 
-          -- set keybinds
           opts.desc = "Show LSP references"
           keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -78,7 +80,7 @@ return {
           keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
           opts.desc = "Format file"
-          keymap.set("n", "<leader>gf", function()
+          keymap.set("n", "<leader>go", function()
             vim.lsp.buf.format({ async = true })
           end, opts)
         end,
@@ -96,6 +98,16 @@ return {
             capabilities = capabilities,
           })
         end,
+        ["ltex"] = function()
+          lspconfig["ltex"].setup({
+            capabilities = capabilities,
+            settings = {
+              ltex = {
+                language = "de",
+              }
+            }
+          })
+        end
       })
     end,
     dependencies = {

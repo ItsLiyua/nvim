@@ -24,7 +24,7 @@ return {
         { name = "nvim_lsp" },
         { name = "vimtex" },
         { name = "luasnip" },
-        { name = "buffer" },
+        { name = "buffer",  option = { keyword_pattern = [[\K\k*]] } },
         { name = "path" },
       }),
       formatting = {
