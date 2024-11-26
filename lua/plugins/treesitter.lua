@@ -7,6 +7,7 @@ return {
         "kotlin",
         "java",
         "hyprlang",
+        "yuck",
         "latex",
       },
       highlight = { enable = true },
