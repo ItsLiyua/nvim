@@ -21,7 +21,7 @@ return {
         "ltex-ls",
 
         -- bash
-        "bashls",
+        "bash-language-server",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
