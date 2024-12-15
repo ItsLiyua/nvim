@@ -9,6 +9,7 @@ return {
         "hyprlang",
         "yuck",
         "latex",
+        "bash",
       },
       highlight = { enable = true },
       indent = { enable = true },
@@ -27,5 +28,6 @@ return {
   build = ":TSUpdate",
   lazy = true,
   event = { "BufReadPre", "InsertEnter" },
+  cmd = { "TSInstall" },
   dependencies = { "windwp/nvim-ts-autotag" },
 }

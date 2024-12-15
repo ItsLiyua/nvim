@@ -19,6 +19,9 @@ return {
 
         -- LaTeX
         "ltex-ls",
+
+        -- bash
+        "bashls",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
@@ -33,7 +36,7 @@ return {
       local lspconfig = require("lspconfig")
       local mason_lspconfig = require("mason-lspconfig")
 
-      local keymap = vim.keymap -- for conciseness
+      local keymap = vim.keymap
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -104,10 +107,10 @@ return {
             settings = {
               ltex = {
                 language = "de",
-              }
-            }
+              },
+            },
           })
-        end
+        end,
       })
     end,
     dependencies = {
