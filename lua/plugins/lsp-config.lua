@@ -22,6 +22,12 @@ return {
 
         -- bash
         "bash-language-server",
+
+        -- js, css, html
+        "prettier",
+        "html-lsp",
+        "css-lsp",
+        "typescript-language-server",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
