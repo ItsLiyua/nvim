@@ -28,6 +28,10 @@ return {
         "html-lsp",
         "css-lsp",
         "typescript-language-server",
+        "eslint",
+
+        -- toml, json, and so on
+        "dprint",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
