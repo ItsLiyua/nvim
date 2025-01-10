@@ -23,3 +23,6 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = ""
