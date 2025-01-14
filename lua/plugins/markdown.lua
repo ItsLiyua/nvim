@@ -6,21 +6,29 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
+    opts = {
+      latex = {
+        enabled = true,
+        render_modes = true,
+      },
+    },
     config = function()
       require("render-markdown").enable()
     end,
   },
-  -- {
-  --   "Thiago4532/mdmath.nvim",
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --   },
-  --   ft = { "markdown" },
-  --   cmd = { "MdMath" },
-  --   opts = {
-  --     dynamic_scale = 0.5,
-  --   },
-  -- },
+  {
+    "jbyuki/nabla.nvim",
+    ft = { "markdown" },
+    keys = {
+      {
+        "<leader>mp",
+        function()
+          require("nabla").popup()
+        end,
+        desc = "Render inline math",
+      },
+    },
+  },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
