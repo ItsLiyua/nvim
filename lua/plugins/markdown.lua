@@ -10,20 +10,17 @@ return {
       require("render-markdown").enable()
     end,
   },
-  {
-    "Thiago4532/mdmath.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    ft = { "markdown" },
-    config = function()
-      local mdmath = require("mdmath")
-      mdmath.setup({
-        dynamic_scale = 0.5
-      })
-      mdmath.enable()
-    end,
-  },
+  -- {
+  --   "Thiago4532/mdmath.nvim",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   ft = { "markdown" },
+  --   cmd = { "MdMath" },
+  --   opts = {
+  --     dynamic_scale = 0.5,
+  --   },
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
