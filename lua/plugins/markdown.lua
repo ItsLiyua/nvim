@@ -1,6 +1,6 @@
 return {
   {
-    "MeanderingProgrammer/render-markdown.nvim",
+    "OXY2DEV/markview.nvim",
     ft = { "markdown" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -8,13 +8,36 @@ return {
     },
     opts = {
       latex = {
-        enabled = true,
-        render_modes = true,
+        enable = true,
+        inline = {
+          enable = true,
+        },
+        operators = {
+          enable = true,
+        },
+        symbols = {
+          enable = true,
+          -- symbols not yet in markview
+          overwrite = {
+            dots = "…",
+            quad = "  ",
+            [" "] = " ",
+            enspace = " ",
+            thinspace = "",
+            iff = "⇔",
+            leftrightarrows = "⇆",
+            to = "→",
+            forall = "∀",
+            emptyset = "∅",
+            Chi = "Χ",
+            choose = "C",
+            coloneqq = "≔",
+            E = "E",
+            Var = "Var",
+          },
+        },
       },
     },
-    config = function()
-      require("render-markdown").enable()
-    end,
   },
   {
     "jbyuki/nabla.nvim",
