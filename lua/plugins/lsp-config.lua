@@ -32,6 +32,10 @@ return {
 
         -- toml, json, and so on
         "dprint",
+
+        -- Markdown
+        "remark-language-server",
+        "remark-cli",
       },
     },
     dependencies = { { "williamboman/mason.nvim", config = true } },
@@ -135,6 +139,7 @@ return {
               none_ls.builtins.formatting.ktlint.with({
                 extra_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
               }),
+              none_ls.builtins.formatting.remark,
             },
           })
         end,
