@@ -14,6 +14,63 @@ return {
         },
         operators = {
           enable = true,
+          configs = {
+            lor = {
+              operator = {
+                conceal = "∨",
+                virt_text = {},
+              },
+              args = {
+                before = {},
+                after = {},
+                scope = {},
+              },
+            },
+            land = {
+              operator = {
+                conceal = "∧",
+                virt_text = {},
+              },
+              args = {
+                before = {},
+                after = {},
+                scope = {},
+              },
+            },
+            leq = {
+              operator = {
+                conceal = "≤",
+                virt_text = {},
+              },
+              args = {
+                before = {},
+                after = {},
+                scope = {},
+              },
+            },
+            geq = {
+              operator = {
+                conceal = "≥",
+                virt_text = {},
+              },
+              args = {
+                before = {},
+                after = {},
+                scope = {},
+              },
+            },
+            cdot = {
+              operator = {
+                conceal = "∙",
+                virt_text = {},
+              },
+              args = {
+                before = {},
+                after = {},
+                scope = {},
+              },
+            },
+          },
         },
         symbols = {
           enable = true,
