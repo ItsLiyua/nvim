@@ -122,6 +122,9 @@ return {
               ltex = {
                 language = "de",
               },
+              remark = {
+                requireConfig = true,
+              },
             },
           })
         end,
