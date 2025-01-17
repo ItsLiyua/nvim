@@ -29,6 +29,13 @@ return {
         cchar_open = "[",
         cchar_close = "]",
       },
+      {
+        mathmode = true,
+        name = "abs",
+        nargs = 1,
+        cchar_open = "|",
+        cchar_close = "|",
+      },
     }
   end,
 }
