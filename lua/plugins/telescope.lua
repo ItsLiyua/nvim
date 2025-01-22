@@ -11,17 +11,22 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
-          }
-        }
+          },
+        },
       },
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
         },
+        smart_open = {
+          show_scores = true,
+          match_algorithm = "fzf",
+        },
       },
     })
     telescope.load_extension("ui-select")
     telescope.load_extension("fzf")
+    telescope.load_extension("smart_open")
   end,
   keys = {
     {
@@ -45,12 +50,27 @@ return {
       end,
       desc = "List all buffers",
     },
+    {
+      "<leader><leader>",
+      function()
+        require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
+      end,
+      desc = "Smart find",
+    },
   },
-  cmd = {"Telescope"},
+  cmd = { "Telescope" },
   tag = "0.1.8",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    {
+      "danielfalk/smart-open.nvim",
+      branch = "0.2.x",
+      dependencies = {
+        "kkharji/sqlite.lua",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      },
+    },
   },
 }
