@@ -1,27 +1,46 @@
 return {
-  'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
-  dependencies = {
-    { 'juansalvatore/git-dashboard-nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-  },
-  opts = function()
-    local git_dashboard = require('git-dashboard-nvim').setup {}
-
-    local opts = {
-      theme = 'doom',
-      config = {
-        header = git_dashboard,
-        center = {
-          { action = '', desc = '', icon = '', key = 'n' },
-        },
-        footer = function()
-          return {}
-        end,
-      },
-    }
-
-    -- extra dashboard nvim config ...
-
-    return opts
-  end,
+	"nvimdev/dashboard-nvim",
+	event = "VimEnter",
+	opts = function()
+		return {
+			theme = "doom",
+			disable_move = true,
+			shortcut_type = "number",
+			change_to_vcs_root = true,
+			config = {
+				header = {
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                     ]],
+					[[       ████ ██████           █████      ██                     ]],
+					[[      ███████████             █████                             ]],
+					[[      █████████ ███████████████████ ███   ███████████   ]],
+					[[     █████████  ███    █████████████ █████ ██████████████   ]],
+					[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+					[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+					[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+				},
+				center = {
+					{ action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
+					{ action = "NeoTree", desc = " File Manager", icon = " ", key = "t" },
+					{
+						action = function()
+							require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
+						end,
+						desc = " Fuzzy Find",
+						icon = " ",
+						key = "f",
+					},
+					{ action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+					{ action = "qa", desc = " Quit", icon = " ", key = "q" },
+				},
+				footer = {},
+			},
+		}
+	end,
 }
