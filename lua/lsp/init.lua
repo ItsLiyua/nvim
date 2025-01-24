@@ -8,13 +8,12 @@ local server_configs = {
 local mason_lspconfig = require("mason-lspconfig")
 
 local function get_servers_to_install()
-  -- local server_names_configured = vim.tbl_keys(server_configs)
-  -- local server_names_available = mason_lspconfig.get_mappings().lspconfig_to_mason
-  --
-  -- return vim.tbl_filter(function(name)
-  --   return server_names_available[name] ~= nil
-  -- end, server_names_configured)
-  return vim.tbl_keys(server_configs)
+  local server_names_configured = vim.tbl_keys(server_configs)
+  local server_names_available = mason_lspconfig.get_mappings().lspconfig_to_mason
+
+  return vim.tbl_filter(function(name)
+    return server_names_available[name] ~= nil
+  end, server_names_configured)
 end
 
 mason_lspconfig.setup({
@@ -25,9 +24,10 @@ local lspconfig = require("lspconfig")
 local function setup_lsp()
   for name, config in pairs(server_configs) do
     lspconfig[name].setup(config)
-    vim.notify(name)
   end
 end
+
+setup_lsp()
 
 vim.diagnostic.config({
 	float = {
