@@ -59,9 +59,28 @@ M.capabilities = vim.tbl_deep_extend("force", M.capabilities, {
 	},
 })
 
+function M.run_all(...)
+	local fns = { ... }
+
+	return function(...)
+		for _, fn in ipairs(fns) do
+			fn(...)
+		end
+	end
+end
+
+function M.disable_formatting(client)
+	client.server_capabilities.documentFormattingProvider = false
+	client.server_capabilities.documentRangeFormattingProvider = false
+end
+
 M.base_config = {
 	on_attach = M.on_attach,
 	capabilities = M.capabilities,
 }
+
+M.base_config_no_format = vim.tbl_extend("force", M.base_config, {
+	on_attach = M.run_all(M.disable_formatting, M.on_attach),
+})
 
 return M

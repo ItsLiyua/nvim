@@ -9,7 +9,9 @@ return {
 			},
 		},
 		backend = "telescope",
-		telescope = require("telescope.themes").get_cursor(),
+		telescope = function()
+			return require("telescope.themes").get_cursor()
+		end,
 	},
-	dependencies = { "nvim-telescope/telescope.nvim" },
+	-- dependencies = { "nvim-telescope/telescope.nvim" },
 }

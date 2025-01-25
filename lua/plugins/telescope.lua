@@ -28,6 +28,7 @@ return {
 		telescope.load_extension("fzf")
 		telescope.load_extension("smart_open")
 	end,
+	lazy = true,
 	keys = {
 		{
 			"<leader><leader>",

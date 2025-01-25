@@ -1,8 +1,8 @@
 local utils = require("lsp.utils")
 
 local server_configs = {
-	lua_ls = utils.base_config,
-	ts_ls = utils.base_config,
+	lua_ls = require("lsp.lua").config,
+	kotlin_language_server = utils.base_config,
 }
 
 local mason_lspconfig = require("mason-lspconfig")
@@ -16,13 +16,28 @@ local function get_servers_to_install()
 	end, server_names_configured)
 end
 
+local function tbl_insert(tbl, val)
+	local present = false
+	for _, v in pairs(tbl) do
+		if v == val then
+			present = true
+			break
+		end
+	end
+	if not present then
+		tbl[#tbl + 1] = val
+	end
+end
+
 local function tbl_values_deep(table)
 	local values = {}
 	for _, value in pairs(table) do
 		if type(value) == "table" then
-			values = vim.tbl_deep_extend("force", values, value)
+			for _, v in pairs(value) do
+				tbl_insert(values, v)
+			end
 		else
-			values.insert(value)
+			tbl_insert(values, value)
 		end
 	end
 	return values
@@ -33,9 +48,7 @@ local function get_formatters_to_install()
 	return tbl_values_deep(formatters)
 end
 
-mason_lspconfig.setup({
-	ensure_installed = get_servers_to_install(),
-})
+mason_lspconfig.setup({ ensure_installed = get_servers_to_install() })
 
 require("mason-tool-installer").setup({ ensure_installed = get_formatters_to_install() })
 
@@ -66,3 +79,5 @@ local function use_icons_for_diagnostic_signs()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 end
+
+use_icons_for_diagnostic_signs()
