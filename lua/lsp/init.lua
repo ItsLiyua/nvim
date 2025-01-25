@@ -1,8 +1,9 @@
 local utils = require("lsp.utils")
 
 local server_configs = {
-	lua_ls = require("lsp.lua").config,
+	bashls = utils.base_config_no_format,
 	kotlin_language_server = utils.base_config_no_format,
+	lua_ls = require("lsp.lua").config,
 }
 
 local mason_lspconfig = require("mason-lspconfig")
