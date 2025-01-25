@@ -12,6 +12,7 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
 
 vim.keymap.set("n", "<leader>to", "<cmd>enew<CR>", { desc = "Creates new empty buffer" })
 vim.keymap.set("n", "<leader>tx", "<cmd>bd<CR>", { desc = "Closes current buffer" })
+vim.keymap.set("n", "<C-w>", "<cmd>bd<CR>", { desc = "Closes current buffer" })
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
 

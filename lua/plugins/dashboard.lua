@@ -27,7 +27,7 @@ return {
 				},
 				center = {
 					{ action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
-					{ action = "NeoTree", desc = " File Manager", icon = " ", key = "t" },
+					{ action = "Neotree", desc = " File Manager", icon = " ", key = "t" },
 					{
 						action = function()
 							require("telescope").extensions.smart_open.smart_open({ cwd_only = true })

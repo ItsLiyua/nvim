@@ -30,9 +30,9 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>ff",
+			"<leader><leader>",
 			function()
-				require("telescope.builtin").find_files()
+				require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
 			end,
 			desc = "Fuzzy-find files",
 		},
@@ -49,13 +49,6 @@ return {
 				require("telescope.builtin").buffers()
 			end,
 			desc = "List all buffers",
-		},
-		{
-			"<leader><leader>",
-			function()
-				require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
-			end,
-			desc = "Smart open",
 		},
 	},
 	cmd = { "Telescope" },
