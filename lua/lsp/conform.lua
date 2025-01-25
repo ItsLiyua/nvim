@@ -1,9 +1,14 @@
-local formatters_by_ft = {
+local M = {}
+
+M.formatters_by_ft = {
 	lua = { "stylua" },
-	kt = { "ktfmt" },
-	kts = { "ktfmt" },
+	kotlin = { "ktlint" },
 }
 
-return {
-	formatters_by_ft = formatters_by_ft,
+M.formatter_conf = {
+	ktlint = {
+		prepend_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
+	},
 }
+
+return M
