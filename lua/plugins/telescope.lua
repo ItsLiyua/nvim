@@ -66,5 +66,6 @@ return {
 				{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			},
 		},
+		"folke/which-key.nvim",
 	},
 }

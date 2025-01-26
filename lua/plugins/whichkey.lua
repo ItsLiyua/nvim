@@ -1,9 +1,23 @@
 return {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  init = function ()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 1000
-  end,
-  opts = {}
+	"folke/which-key.nvim",
+	lazy = false,
+	config = function()
+		local wk = require("which-key")
+
+		wk.setup({
+			preset = "helix",
+			delay = 1000,
+		})
+
+		wk.add({
+			"<leader>?",
+			function()
+				wk.show({ global = false })
+			end,
+			desc = "Show keymap",
+			icon = { icon = "󰌌", color = "yellow" },
+		})
+
+		require("keymap")
+	end,
 }
