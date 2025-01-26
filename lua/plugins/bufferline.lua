@@ -2,7 +2,8 @@ return {
 	"akinsho/bufferline.nvim",
 	version = "*",
 	dependencies = { "nvim-tree/nvim-web-devicons", "RedsXDD/neopywal.nvim" },
-	lazy = false,
+	-- lazy = false,
+	event = { "BufAdd", "BufEnter", "BufReadPre", "BufNewFile" },
 	config = function()
 		require("bufferline").setup({
 			options = {

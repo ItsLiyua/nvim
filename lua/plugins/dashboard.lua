@@ -7,6 +7,7 @@ return {
 			disable_move = true,
 			shortcut_type = "number",
 			change_to_vcs_root = true,
+			hide = {},
 			config = {
 				header = {
 					[[                                                                       ]],
