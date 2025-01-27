@@ -8,11 +8,14 @@ return {
 	opts = { focus = true },
 	cmd = "Trouble",
 	keys = {
-		{ "<leader>x", group = "Diagnostics..." },
-		{ "<leader>xw", "<cmd>Trouble diagnostics toggle<CR>" },
-		{ "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>" },
-		{ "<leader>xq", "<cmd>Trouble quickfix toggle<CR>" },
-		{ "<leader>xl", "<cmd>Trouble loclist toggle<CR>" },
-		{ "<leader>xt", "<cmd>Trouble todo toggle<CR>" },
+		{ "<leader>dw", "<cmd>Trouble diagnostics toggle<CR>", desc = "Toggle diagnostics window" },
+		{
+			"<leader>dd",
+			"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+			desc = "Toggle diagnostics for current window",
+		},
+		{ "<leader>dq", "<cmd>Trouble quickfix toggle<CR>", desc = "Toggle quickfix" },
+		{ "<leader>dl", "<cmd>Trouble loclist toggle<CR>", desc = "Toggle loclist" },
+		{ "<leader>dt", "<cmd>Trouble todo toggle<CR>", desc = "Toggle todo list" },
 	},
 }

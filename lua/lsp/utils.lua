@@ -11,16 +11,14 @@ local function setup_lsp_keymaps(_client, bufnr)
 			end,
 			desc = "Hover",
 		},
-		{ "g", group = "LSP keybinds" },
-		{ "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Go to declaration" },
-		{ "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
-		{ "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Go to implementation" },
-		{ "gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
-		{ "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Go to type definition" },
-		{ "cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename (LSP)" },
+		{ "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Go to declaration" },
+		{ "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
+		{ "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Go to implementation" },
+		{ "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
+		{ "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Go to type definition" },
+		{ "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename (LSP)" },
 		{ "<Leader>dl", "lua vim.diagnostic.open_float()", desc = "Show diagnostics for current line" },
 		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },
-		{ "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", desc = "Show diagnostics in location list" },
 	}))
 end
 
