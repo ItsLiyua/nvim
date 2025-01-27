@@ -1,6 +1,6 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
+	event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
 	opts = {
 		routes = {
 			{

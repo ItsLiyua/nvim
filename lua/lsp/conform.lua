@@ -9,7 +9,7 @@ M.formatters_by_ft = {
 
 M.formatter_conf = {
 	ktlint = {
-		prepend_args = { "--editorconfig=~/.config/nvim/ktlint.cfg" },
+		prepend_args = { "--editorconfig=~/.config/nvim/settings/linters/ktlint.cfg" },
 	},
 }
 
