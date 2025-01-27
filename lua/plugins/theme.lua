@@ -46,6 +46,11 @@ return {
 			trouble = true,
 			which_key = true,
 		},
+		custom_highlights = function(C)
+			return {
+				["hl-IblScope"] = { fg = C.color3 },
+			}
+		end,
 	},
 	init = function()
 		vim.cmd.colorscheme("neopywal-dark")

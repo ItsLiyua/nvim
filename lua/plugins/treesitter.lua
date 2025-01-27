@@ -10,7 +10,6 @@ return {
         "java",
 
         "hyprlang",
-        "yuck",
 
         "latex",
         "markdown",

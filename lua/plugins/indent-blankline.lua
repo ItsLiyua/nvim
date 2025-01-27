@@ -6,5 +6,11 @@ return {
 	opts = {
 		indent = { char = "▎" },
 		exclude = { filetypes = { "dashboard" } },
+		-- scope = {
+		-- 	enabled = true,
+		-- 	char = "▎",
+		-- 	show_start = true,
+		-- 	show_end = true,
+		-- },
 	},
 }
