@@ -34,6 +34,13 @@ return {
 				},
 				opts = { skip = true },
 			},
+			{
+				filter = {
+					event = "msg_show",
+					find = "AutoSave: saved at",
+				},
+				opts = { skip = true },
+			},
 		},
 		lsp = {
 			override = {
