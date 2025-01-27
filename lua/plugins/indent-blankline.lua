@@ -4,10 +4,6 @@ return {
 	main = "ibl",
 	opts = {
 		indent = { char = "┊" },
-		exclude = {
-			buftypes = {
-				"dashboard",
-			},
-		},
+		exclude = { filetypes = { "dashboard" } },
 	},
 }
