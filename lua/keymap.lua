@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 wk.add({
-	{ "jk", "<ESC>", mode = { "i", "v" }, icon = { icon = "󰈆", color = "red" }, desc = "Exit insert/visual mode" },
+	{ "jk", "<ESC>", mode = { "i" }, icon = { icon = "󰈆", color = "red" }, desc = "Exit insert/visual mode" },
 	{ "<leader>nh", "<cmd>nohl<CR>", icon = { icon = "", color = "red" }, desc = "Clear search" },
 	{ "<leader>+", "<C-a>", icon = { icon = "󰜄", color = "green" }, desc = "Increment number" },
 	{ "<leader>-", "<C-x>", icon = { icon = "󰛲", color = "green" }, desc = "Decrement number" },
