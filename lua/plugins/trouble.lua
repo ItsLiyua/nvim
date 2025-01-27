@@ -6,17 +6,6 @@ return {
 		"folke/which-key.nvim",
 	},
 	opts = { focus = true },
-	init = function()
-		local wk = require("which-key")
-		wk.add({
-			{ "<leader>x", group = "Diagnostics...", icon = { icon = "", color = "yellow" } },
-			{ "<leader>xw", desc = "Open trouble workspace diagnostics" },
-			{ "<leader>xd", desc = "Open trouble document diagnostics" },
-			{ "<leader>xq", desc = "Open trouble quickfix list" },
-			{ "<leader>xl", desc = "Open trouble location list" },
-			{ "<leader>xt", icon = { icon = "", color = "yellow" }, desc = "Open todos in trouble" },
-		})
-	end,
 	cmd = "Trouble",
 	keys = {
 		{ "<leader>x", group = "Diagnostics..." },

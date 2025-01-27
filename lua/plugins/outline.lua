@@ -12,12 +12,4 @@ return {
 			symbol_folding = { auto_fold = true },
 		})
 	end,
-	init = function()
-		require("which-key").add({
-			"<leader>o",
-			"<cmd>Outline<CR>",
-			icon = { icon = "󰊕", color = "blue" },
-			desc = "Open outline",
-		})
-	end,
 }

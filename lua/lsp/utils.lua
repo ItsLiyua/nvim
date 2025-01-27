@@ -1,8 +1,6 @@
 local M = {}
 
 local function setup_lsp_keymaps(_client, bufnr)
-	local function hover() end
-
 	require("which-key").add(vim.tbl_map(function(mapping)
 		return vim.tbl_extend("force", mapping, { buffer = bufnr })
 	end, {
@@ -18,19 +16,10 @@ local function setup_lsp_keymaps(_client, bufnr)
 		{ "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
 		{ "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Go to implementation" },
 		{ "gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
-		{ "gc", group = "Call hierarchy" },
-		{ "gci", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>", desc = "Go to incoming calls" },
-		{ "gco", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>", desc = "Go to outgoing calls" },
 		{ "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Go to type definition" },
-		{ "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
-		{
-			"<Leader>d",
-			function()
-				vim.diagnostic.open_float()
-			end,
-			desc = "Show diagnostics for current line",
-		},
-		{ "gra", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },
+		{ "cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename (LSP)" },
+		{ "<Leader>dl", "lua vim.diagnostic.open_float()", desc = "Show diagnostics for current line" },
+		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },
 		{ "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", desc = "Show diagnostics in location list" },
 	}))
 end

@@ -1,6 +1,29 @@
 return {
 	"folke/noice.nvim",
 	event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
+	keys = {
+		{ "n", "<leader>nd", "<cmd>Noice dismiss<CR>", desc = "Dismiss notification" },
+		{ "n", "<leader>nh", "<cmd>Noice telescope<CR>", desc = "View recent notifications" },
+		{ "n", "<leader>nl", "<cmd>Noice last<CR>", desc = "View recent notifications" },
+		{
+			"<leader>nD",
+			function()
+				local n = require("noice")
+				vim.g.noiceenabled = not vim.g.noiceenabled
+				if vim.g.noiceenabled then
+					n.enable()
+					vim.notify("Enabled notification popups", vim.log.levels.INFO)
+				else
+					vim.notify("Disabled notification popups", vim.log.levels.INFO)
+					n.disable()
+				end
+			end,
+			desc = "Toggle notification popups",
+		},
+	},
+	init = function()
+		vim.g.noiceenabled = true
+	end,
 	opts = {
 		routes = {
 			{

@@ -1,13 +1,9 @@
 return {
 	"folke/which-key.nvim",
-	lazy = false,
+	event = { "BufAdd", "BufReadPre", "BufNewFile" },
 	config = function()
 		local wk = require("which-key")
-
-		wk.setup({
-			preset = "helix",
-			delay = 1000,
-		})
+		wk.setup({ preset = "helix", delay = 1000 })
 
 		wk.add({
 			"<leader>?",
@@ -17,7 +13,5 @@ return {
 			desc = "Show keymap",
 			icon = { icon = "󰌌", color = "yellow" },
 		})
-
-		require("keymap")
 	end,
 }

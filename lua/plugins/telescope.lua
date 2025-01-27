@@ -11,6 +11,7 @@ return {
 					i = {
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-j>"] = actions.move_selection_next,
+						["<C-q>"] = actions.close,
 					},
 				},
 			},
@@ -35,6 +36,13 @@ return {
 			function()
 				require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
 			end,
+			desc = "Fuzzy-find files/buffers",
+		},
+		{
+			"<leader>ff",
+			function()
+				require("telescope.builtin").find_files()
+			end,
 			desc = "Fuzzy-find files",
 		},
 		{
@@ -45,11 +53,18 @@ return {
 			desc = "Search across all files",
 		},
 		{
-			"<leader>tl",
+			"<leader>bl",
 			function()
 				require("telescope.builtin").buffers()
 			end,
 			desc = "List all buffers",
+		},
+		{
+			"<leader>mh",
+			function()
+				require("telescope.builtin").command_history()
+			end,
+			desc = "List recent commands",
 		},
 	},
 	cmd = { "Telescope" },

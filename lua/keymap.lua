@@ -1,24 +1,29 @@
-local wk = require("which-key")
+local k = vim.keymap
+k.set("n", "q:", "<Nop>") -- Unmap regular command history
+k.set("n", "nh", "<Nop>")
 
-wk.add({
-	{ "jk", "<ESC>", mode = { "i" }, icon = { icon = "󰈆", color = "red" }, desc = "Exit insert/visual mode" },
-	{ "<leader>nh", "<cmd>nohl<CR>", icon = { icon = "", color = "red" }, desc = "Clear search" },
-	{ "<leader>+", "<C-a>", icon = { icon = "󰜄", color = "green" }, desc = "Increment number" },
-	{ "<leader>-", "<C-x>", icon = { icon = "󰛲", color = "green" }, desc = "Decrement number" },
-	{ "<leader>s", group = "Split...", icon = { icon = "", color = "purple" } },
-	{ "<leader>sv", "<cmd>vsplit<CR>", icon = { icon = "", color = "green" }, desc = "Split window vertically" },
-	{ "<leader>sh", "<cmd>split<CR>", icon = { icon = "", color = "green" }, desc = "Split window horizontally" },
-	{ "<leader>se", "<C-w>=", icon = { icon = "󰇼", color = "blue" }, desc = "Make splits equal size" },
-	{ "<leader>sx", "<cmd>close<CR>", icon = { icon = "", color = "red" }, desc = "Close split" },
-	{ "<leader>t", group = "Buffers...", icon = { icon = "󰓩", color = "purple" } },
-	{ "<leader>to", "<cmd>enew<CR>", icon = { icon = "󰝜", color = "green" }, desc = "Create new empty buffer" },
-	{ "<leader>tx", "<cmd>bd<CR>", icon = { icon = "󰭌", color = "red" }, desc = "Close current buffer" },
-	{ "<C-w>", "<cmd>bd<CR>", icon = { icon = "󰭌", color = "red" }, desc = "Close current buffer" },
-	{ "<Tab>", "<cmd>bnext<CR>", icon = { icon = "", color = "blue" }, desc = "Go to next buffer" },
-	{ "<S-Tab>", "<cmd>bprevious<CR>", icon = { icon = "", color = "blue" }, desc = "Go to previous buffer" },
-	{ "<C-h>", "<cmd>wincmd h<CR>", icon = { icon = "", color = "blue" }, desc = "Move to left split" },
-	{ "<C-j>", "<cmd>wincmd j<CR>", icon = { icon = "", color = "blue" }, desc = "Move to bottom split" },
-	{ "<C-k>", "<cmd>wincmd k<CR>", icon = { icon = "", color = "blue" }, desc = "Move to top split" },
-	{ "<C-l>", "<cmd>wincmd l<CR>", icon = { icon = "", color = "blue" }, desc = "Move to right split" },
-	{ "<leader>f", group = "Find...", icon = { icon = "", color = "purple" } },
-})
+k.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+k.set("n", "<leader>mc", "<cmd>nohl<CR>", { desc = "Clear search" })
+k.set("n", "<leader>qq", "<cmd>wa<CR><cmd>q<CR>", { desc = "Save all buffers and exit" })
+
+k.set({ "n", "i" }, "<C-+>", "<C-a>", { desc = "Increment number" })
+k.set("n", "<leader>m+", "<C-a>", { desc = "Increment number" })
+k.set({ "n", "i" }, "<C-->", "<C-x>", { desc = "Decrement number" })
+k.set("n", "<leader>m-", "<C-x>", { desc = "Decrement number" })
+
+k.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split vertically" })
+k.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split horizontally" })
+k.set("n", "<leader>se", "<C-w>=", { desc = "Resize splits to equal size" })
+k.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+
+k.set("n", "<leader>bo", "<cmd>enew<CR>", { desc = "New empty buffer" })
+k.set("n", "<leader>bx", "<cmd>bd<CR>", { desc = "Close buffer" })
+k.set("n", "<C-w>", "<cmd>bd<CR>", { desc = "Close buffer" })
+
+k.set("n", "<leader>fn", "<cmd>enew<CR>", { desc = "New file" })
+k.set("n", "<leader>fw", "<cmd>w<CR>", { desc = "Save file" })
+
+k.set("n", "<C-h>", "<cmd>wincmd h<CR>", { desc = "Move to left split" })
+k.set("n", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Move to bottom split" })
+k.set("n", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Move to top split" })
+k.set("n", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Move to right split" })

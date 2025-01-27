@@ -1,8 +1,8 @@
 return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
-	opts = function()
-		return {
+	config = function()
+		require("dashboard").setup({
 			theme = "doom",
 			disable_move = true,
 			shortcut_type = "number",
@@ -45,6 +45,6 @@ return {
 				},
 				footer = {},
 			},
-		}
+		})
 	end,
 }
