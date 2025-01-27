@@ -31,6 +31,7 @@ return {
 				center = {
 					{ action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
 					{ action = "Neotree", desc = " File Manager", icon = " ", key = "t" },
+					{ action = "SessionRestore", desc = " Restore Session", icon = "󰦛 ", key = "r" },
 					{
 						action = function()
 							require("telescope").extensions.smart_open.smart_open({ cwd_only = true })

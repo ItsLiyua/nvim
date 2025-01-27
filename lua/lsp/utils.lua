@@ -36,7 +36,7 @@ local function setup_lsp_keymaps(_client, bufnr)
 end
 
 function M.on_attach(client, bufnr)
-	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+	vim.bo.omnifunc = "v:lua.vim.lsp.omninc"
 
 	setup_lsp_keymaps()
 end
