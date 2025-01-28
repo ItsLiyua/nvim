@@ -8,7 +8,7 @@ vim.opt.expandtab = true
 
 vim.opt.number = true
 
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

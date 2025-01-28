@@ -48,9 +48,42 @@ return {
 			}),
 		})
 
+		local icons = { "󰎤", "󰎧", "󰎪", "󰎭", "󰎱", "󰎳", "󰎶", "󰎹", "󰎼" }
+
 		local wk = require("which-key")
-		for i = 1, 10 do
-			wk.add({ "<leader>" .. i, "<cmd>BufferLineGoToBuffer " .. i .. "<CR>", hidden = true })
+		for i = 1, 9 do
+			wk.add({
+				{
+					"<leader>g" .. (i % 10),
+					"<cmd>BufferLineGoToBuffer " .. i .. "<CR>",
+					desc = "Go to buffer " .. i,
+					icon = { icon = icons[i], color = "azure" },
+				},
+				{
+					"<leader>" .. (i % 10),
+					"<cmd>BufferLineGoToBuffer " .. i .. "<CR>",
+					hidden = true,
+				},
+			})
 		end
+
+		wk.add({
+			{ "<Tab>", "<cmd>BufferLineCycleNext<CR>", mode = "n", hidden = true },
+			{ "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", mode = "n", hidden = true },
+			{
+				"<leader>gn",
+				"<cmd>BufferLineCycleNext<CR>",
+				mode = "n",
+				desc = "Go to next buffer",
+				icon = { icon = "", color = "azure" },
+			},
+			{
+				"<leader>gb",
+				"<cmd>BufferLineCyclePrev<CR>",
+				mode = "n",
+				desc = "Go to previous buffer",
+				icon = { icon = "", color = "azure" },
+			},
+		})
 	end,
 }
