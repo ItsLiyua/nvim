@@ -6,6 +6,7 @@ local server_configs = {
 	lua_ls = require("lsp.lua").config,
 	yamlls = require("lsp.yaml").config,
 	jsonls = require("lsp.json").config,
+  hyprls = utils.base_config
 }
 
 local mason_lspconfig = require("mason-lspconfig")
