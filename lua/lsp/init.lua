@@ -4,8 +4,8 @@ local server_configs = {
 	bashls = utils.base_config_no_format,
 	kotlin_language_server = utils.base_config_no_format,
 	lua_ls = require("lsp.lua").config,
-  yaml_ls = require("lsp.yaml").config,
-  jsonls = require("lsp.json").config,
+	yamlls = require("lsp.yaml").config,
+	jsonls = require("lsp.json").config,
 }
 
 local mason_lspconfig = require("mason-lspconfig")
