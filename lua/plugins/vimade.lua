@@ -1,5 +1,6 @@
 return {
 	"tadaa/vimade",
+  enable = false,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local vm = require("vimade")
@@ -8,14 +9,7 @@ return {
 
 			blocklist = {
 				custom = function(win, active)
-					local syn = win.buf_opts.syntax
-					local blocked = {
-						"neo-tree",
-						"lazy",
-						"mason",
-						"dashboard",
-					}
-					return vim.tbl_contains(blocked, syn)
+					return vim.tbl_contains(require("utils").non_filetypes, win.buf_opts.syntax)
 				end,
 			},
 		})

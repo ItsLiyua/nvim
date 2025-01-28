@@ -2,18 +2,17 @@ Not yet implemented:
 
 ### Universal:
 
-| Key      | Action              | Done |
-| -------- | ------------------- | ---- |
-| C-n      | File Tree           |      |
-| C-hjkl   | Move between splits | done |
-| C-HJKL   | Resize split        |      |
-| C-1...10 | Move to nth buffer  |      |
+| Key    | Action              | Done |
+| ------ | ------------------- | ---- |
+| C-n    | File Tree           | done |
+| C-hjkl | Move between splits | done |
+| C-HJKL | Resize split        |      |
 
 ### Normal Mode:
 
 | Key       | Action                         | Done |
 | --------- | ------------------------------ | ---- |
-| Tab/S-Tab | Move Between Buffers           |      |
+| Tab/S-Tab | Move Between Buffers           | done |
 | C-+       | Increment number               | done |
 | C--       | Decrement number               | done |
 | q:        | Unbind. Cmd hist will be moved | done |
@@ -37,7 +36,7 @@ Not yet implemented:
 | +d  | Diagnostics Group           | -    |
 | dl  | LSP Diagnostics             | done |
 | +f  | Find/Files Group            | -    |
-| fe  | File tree                   |      |
+| fe  | File tree                   | done |
 | ff  | Find files                  | done |
 | fg  | Find text globally          | done |
 | fn  | New File                    | done |
@@ -85,12 +84,12 @@ Not yet implemented:
 | Key | Action           | Done |
 | --- | ---------------- | ---- |
 | +s  | Surround group   | -    |
-| s"  | Surround with "" |      |
-| s'  | Surround with '' |      |
-| s<  | Surround with <> |      |
-| s(  | Surround with () |      |
-| s[  | Surround with [] |      |
-| s{  | Surround with {} |      |
+| s"  | Surround with "" | done |
+| s'  | Surround with '' | done |
+| s<  | Surround with <> | done |
+| s(  | Surround with () | done |
+| s[  | Surround with [] | done |
+| s{  | Surround with {} | done |
 
 ### Still needed
 

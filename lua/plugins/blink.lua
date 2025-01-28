@@ -6,7 +6,7 @@ return {
 		event = { "BufReadPre", "InsertEnter" },
 		opts = {
 			enabled = function()
-				local disabled_ft = { "neo-tree", "neo-tree-popup", "dashboard" }
+				local disabled_ft = require("utils").non_filetypes
 				return not vim.tbl_contains(disabled_ft, vim.bo.filetype)
 			end,
 			keymap = {
