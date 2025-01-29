@@ -1,12 +1,12 @@
 return {
   "lervag/vimtex",
-  lazy = true,
   ft = { "tex" },
   init = function()
     vim.g.vimtex_view_method = "zathura"
     vim.g.vimtex_syntax_conceal = {
       math_fracs = false,
       accents = true,
+      -- math_bounds = false,
     }
     vim.g.vimtex_syntax_custom_cmds = {
     }
@@ -48,4 +48,8 @@ return {
       },
     }
   end,
+  config = function()
+    require("vimtex").setup()
+    vim.cmd("VimtexCompile")
+  end
 }

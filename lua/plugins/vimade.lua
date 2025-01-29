@@ -4,13 +4,18 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local vm = require("vimade")
+		local blocked = { "tex" }
+
 		vm.setup({
 			fadelevel = 0.6,
 
 			blocklist = {
 				statusbar = { highlights = { "/^lualine.*/" } },
 				windows = function(win, active)
-					return vim.tbl_contains(require("utils").non_filetypes, win.buf_opts.syntax)
+					return vim.tbl_contains(
+						vim.tbl_extend("force", require("utils").non_filetypes, blocked),
+						win.buf_opts.syntax
+					)
 				end,
 			},
 		})

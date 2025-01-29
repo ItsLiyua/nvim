@@ -6,7 +6,8 @@ local server_configs = {
 	lua_ls = require("lsp.lua").config,
 	yamlls = require("lsp.yaml").config,
 	jsonls = require("lsp.json").config,
-  hyprls = utils.base_config
+	hyprls = utils.base_config,
+	ltex = require("lsp.latex"),
 }
 
 local mason_lspconfig = require("mason-lspconfig")
@@ -54,7 +55,11 @@ end
 
 mason_lspconfig.setup({ ensure_installed = get_servers_to_install() })
 
-require("mason-tool-installer").setup({ ensure_installed = get_formatters_to_install() })
+local mti = require("mason-tool-installer")
+mti.setup({ ensure_installed = get_formatters_to_install() })
+vim.defer_fn(function()
+	mti.check_install(true, true)
+end, 0)
 
 local lspconfig = require("lspconfig")
 local function setup_lsp()
