@@ -52,7 +52,7 @@ Not yet implemented:
 | m-  | Decrement number            | done |
 | mc  | Clear Search                | done |
 | mh  | Command history (telescope) | done |
-| mt  | Terminal                    |      |
+| mt  | Terminal                    | done |
 | +n  | Notifications group         | -    |
 | nd  | Dismiss notif               | done |
 | nD  | Toggle noice.nvim           | done |
