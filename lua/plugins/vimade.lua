@@ -1,6 +1,6 @@
 return {
 	"tadaa/vimade",
-	-- enabled = false,
+	enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local vm = require("vimade")
@@ -10,7 +10,7 @@ return {
 			fadelevel = 0.6,
 
 			blocklist = {
-				statusbar = { highlights = { "/^lualine.*/" } },
+				statusbar = { highlights = { "/^lualine.*/", "/^DropBar.*/" } },
 				windows = function(win, active)
 					return vim.tbl_contains(
 						vim.tbl_extend("force", require("utils").non_filetypes, blocked),
