@@ -23,7 +23,9 @@ return {
 			{ "<leader>n", group = "Notifications...", icon = { icon = "", color = "blue" } },
 			{ "<leader>o", icon = { icon = "󰅪", color = "yellow" } },
 			{ "<leader>q", group = "Session...", icon = { icon = "󰦛", color = "blue" } },
+			{ "<leader>r", group = "Run...", icon = { icon = "", color = "blue" } },
 			{ "<leader>s", group = "Split...", icon = { icon = "", color = "blue" } },
+			{ "<leader>t", group = "Terminal...", icon = { icon = "", color = "blue" } },
 			{ "<leader>v", group = "VCS...", icon = { icon = "", color = "blue" } },
 		})
 	end,
