@@ -18,6 +18,7 @@ k.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
 
 k.set("n", "<leader>bo", "<cmd>enew<CR>", { desc = "New empty buffer" })
 k.set("n", "<leader>bx", "<cmd>bd<CR>", { desc = "Close buffer" })
+k.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Close buffer" })
 k.set("n", "<C-w>", "<cmd>bd<CR>", { desc = "Close buffer" })
 
 k.set("n", "<leader>fn", "<cmd>enew<CR>", { desc = "New file" })

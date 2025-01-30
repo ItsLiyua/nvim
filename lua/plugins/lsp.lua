@@ -8,7 +8,7 @@ return {
 		{
 			"williamboman/mason.nvim",
 			config = true,
-      build = ":MasonUpdate"
+			build = ":MasonUpdate",
 		},
 		{
 			"stevearc/conform.nvim",

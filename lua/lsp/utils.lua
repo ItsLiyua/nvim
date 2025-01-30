@@ -1,5 +1,6 @@
 local M = {}
 
+---@diagnostic disable-next-line: unused-local
 local function setup_lsp_keymaps(_client, bufnr)
 	require("which-key").add(vim.tbl_map(function(mapping)
 		return vim.tbl_extend("force", mapping, { buffer = bufnr })
@@ -7,7 +8,7 @@ local function setup_lsp_keymaps(_client, bufnr)
 		{
 			"K",
 			function()
-				vim.lsp.buf.hover({ border = "rounded" })
+				-- vim.lsp.buf.hover({ border = "rounded" })
 			end,
 			desc = "Hover",
 		},
@@ -22,6 +23,7 @@ local function setup_lsp_keymaps(_client, bufnr)
 	}))
 end
 
+---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
 	vim.bo.omnifunc = "v:lua.vim.lsp.omninc"
 
