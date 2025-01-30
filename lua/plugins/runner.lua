@@ -1,3 +1,4 @@
+-- Alternative: stevearc/overseer.nvim
 return {
 	"gitpushjoe/zuzu.nvim",
 	keys = {
