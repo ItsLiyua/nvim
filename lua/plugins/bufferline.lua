@@ -11,6 +11,7 @@ return {
 			options = {
 				separator_style = "thin",
 				numbers = "ordinal",
+				auto_toggle_bufferline = true,
 				indicator = {
 					icon = nil,
 					style = "underline",
