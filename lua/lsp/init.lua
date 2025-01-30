@@ -7,7 +7,7 @@ local server_configs = {
 	yamlls = require("lsp.yaml").config,
 	jsonls = require("lsp.json").config,
 	hyprls = utils.base_config,
-	ltex = require("lsp.latex"),
+	ltex = require("lsp.latex").config,
 }
 
 local mason_lspconfig = require("mason-lspconfig")
