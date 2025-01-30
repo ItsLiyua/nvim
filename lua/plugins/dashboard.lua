@@ -57,8 +57,7 @@ return {
 							end
 						end
 					end
-
-					vim.cmd("Dashboard")
+          require("dashboard"):instance()
 				end,
 			})
 		end, 0)
