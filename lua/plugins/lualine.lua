@@ -4,7 +4,7 @@ return {
 	event = { "BufReadPre", "BufNewFile", "BufAdd" },
 	opts = {
 		options = {
-			globalstatus = true,
+			globalstatus = false,
 			theme = "neopywal",
 		},
 		sections = {

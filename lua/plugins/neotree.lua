@@ -12,6 +12,13 @@ return {
 	},
 	cmd = { "Neotree" },
 	opts = {
+		filesystem = {
+			filtered_items = {
+				visible = true,
+				hide_dotfiles = false,
+				hide_gitignored = true,
+			},
+		},
 		event_handlers = {
 			{
 				event = "file_open_requested",

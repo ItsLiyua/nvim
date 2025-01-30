@@ -52,7 +52,7 @@ Not yet implemented:
 | m-  | Decrement number            | done |
 | mc  | Clear Search                | done |
 | mh  | Command history (telescope) | done |
-| mt  | Terminal                    |      |
+| mt  | Toggle auto-save            | done |
 | +n  | Notifications group         | -    |
 | nd  | Dismiss notif               | done |
 | nD  | Toggle noice.nvim           | done |
@@ -69,6 +69,14 @@ Not yet implemented:
 | sm  | Maximize split              | done |
 | sv  | Vertical split              | done |
 | sx  | Close split                 | done |
+| +r  | Run group                   | -    |
+| rr  | Rerun last task             |      |
+| rs  | Select task to run          |      |
+| +t  | Terminal group              | -    |
+| t1  | Open terminal 1             |      |
+| t2  | Open terminal 2             |      |
+| t3  | Open terminal 3             |      |
+| t4  | Open terminal 4             |      |
 | +v  | VCS                         | -    |
 | vb  | Git blame                   | done |
 | vg  | Git graph                   | done |

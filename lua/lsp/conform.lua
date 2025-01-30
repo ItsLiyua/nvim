@@ -5,6 +5,7 @@ M.formatters_by_ft = {
 	lua = { "stylua" },
 	python = { "isort", "black" },
 	sh = { "shfmt" },
+	tex = { "latexindent" },
 }
 
 M.formatter_conf = {
