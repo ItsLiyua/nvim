@@ -6,7 +6,6 @@ return {
     vim.g.vimtex_syntax_conceal = {
       math_fracs = false,
       accents = true,
-      -- math_bounds = false,
     }
     vim.g.vimtex_syntax_custom_cmds = {
     }
@@ -48,8 +47,4 @@ return {
       },
     }
   end,
-  config = function()
-    require("vimtex").setup()
-    vim.cmd("VimtexCompile")
-  end
 }
