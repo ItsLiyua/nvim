@@ -53,6 +53,7 @@ local function get_formatters_to_install()
 	return tbl_values_deep(formatters)
 end
 
+---@diagnostic disable-next-line: missing-fields
 mason_lspconfig.setup({ ensure_installed = get_servers_to_install() })
 
 local mti = require("mason-tool-installer")
