@@ -18,6 +18,7 @@ return {
 				hide_dotfiles = false,
 				hide_gitignored = true,
 			},
+			group_empty_dirs = true,
 		},
 		event_handlers = {
 			{
