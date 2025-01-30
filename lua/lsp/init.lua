@@ -1,16 +1,6 @@
-local utils = require("lsp.utils")
-
-local server_configs = {
-	bashls = utils.base_config_no_format,
-	kotlin_language_server = utils.base_config_no_format,
-	lua_ls = require("lsp.lua").config,
-	yamlls = require("lsp.yaml").config,
-	jsonls = require("lsp.json").config,
-	hyprls = utils.base_config,
-	ltex = require("lsp.latex").config,
-}
-
 local mason_lspconfig = require("mason-lspconfig")
+
+local server_configs = require("lsp.lsps").server_configs
 
 local function get_servers_to_install()
 	local server_names_configured = vim.tbl_keys(server_configs)
