@@ -5,7 +5,7 @@ return {
 	config = function()
 		local vm = require("vimade")
 		vm.setup({
-			fadelevel = 0.6,
+			fadelevel = 0.75,
 
 			blocklist = {
 				statusbar = { highlights = { "/^lualine.*/" } },
