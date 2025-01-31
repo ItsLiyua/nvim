@@ -43,11 +43,15 @@ local function get_formatters_to_install()
 	return tbl_values_deep(formatters)
 end
 
+local function get_adapters_to_install()
+	return vim.tbl_keys(require("lsp.dap").adapter_configs)
+end
+
 ---@diagnostic disable-next-line: missing-fields
 mason_lspconfig.setup({ ensure_installed = get_servers_to_install() })
 
 local mti = require("mason-tool-installer")
-mti.setup({ ensure_installed = get_formatters_to_install() })
+mti.setup({ ensure_installed = vim.tbl_extend("force", get_formatters_to_install(), get_adapters_to_install()) })
 vim.defer_fn(function()
 	mti.check_install(true, true)
 end, 0)

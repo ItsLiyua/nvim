@@ -16,7 +16,7 @@ return {
 			},
 			{ "<leader>b", group = "Buffers...", icon = { icon = "", color = "blue" } },
 			{ "<leader>c", group = "Code...", icon = { icon = "", color = "blue" } },
-			{ "<leader>d", group = "Diagnostics...", icon = { icon = "", color = "blue" } },
+			{ "<leader>d", group = "Debugging", icon = { icon = "", color = "blue" } },
 			{ "<leader>f", group = "Files...", icon = { icon = "", color = "blue" } },
 			{ "<leader>g", group = "Go to...", icon = { icon = "", color = "blue" } },
 			{ "<leader>m", group = "Miscellaneous...", icon = { icon = "󱁤", color = "blue" } },
@@ -27,6 +27,7 @@ return {
 			{ "<leader>s", group = "Split...", icon = { icon = "", color = "blue" } },
 			{ "<leader>t", group = "Terminal...", icon = { icon = "", color = "blue" } },
 			{ "<leader>v", group = "VCS...", icon = { icon = "", color = "blue" } },
+			{ "<leader>x", group = "Diagnostics...", icon = { icon = "", color = "blue" } },
 		})
 	end,
 }

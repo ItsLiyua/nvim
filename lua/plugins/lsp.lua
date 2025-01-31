@@ -31,5 +31,11 @@ return {
 		},
 		{ "williamboman/mason-lspconfig.nvim", config = true },
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{
+			"saghen/blink.cmp",
+			dependencies = "rafamadriz/friendly-snippets",
+			version = "*",
+			opts = require("lsp.cmp"),
+		},
 	},
 }

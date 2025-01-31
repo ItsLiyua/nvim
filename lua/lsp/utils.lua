@@ -8,7 +8,8 @@ local function setup_lsp_keymaps(_client, bufnr)
 		{
 			"K",
 			function()
-				-- vim.lsp.buf.hover({ border = "rounded" })
+---@diagnostic disable-next-line: redundant-parameter
+				vim.lsp.buf.hover({ border = "rounded" })
 			end,
 			desc = "Hover",
 		},
@@ -22,22 +23,32 @@ local function setup_lsp_keymaps(_client, bufnr)
 		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },
 	}))
 end
+local function setup_document_highlight(client)
+	if not client.supports_method("textDocument/documentHighlight") then
+		return
+	end
+
+	vim.cmd([[
+    hi LspReferenceText  cterm=bold ctermbg=red guibg=#404040
+    hi LspReferenceRead  cterm=bold ctermbg=red guibg=#404040
+    hi LspReferenceWrite cterm=bold ctermbg=red guibg=#404040
+    augroup LSPDocumentHighlight
+      autocmd! * <buffer>
+      autocmd CursorHold,CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+  ]])
+end
 
 ---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
 	vim.bo.omnifunc = "v:lua.vim.lsp.omninc"
 
 	setup_lsp_keymaps()
+	setup_document_highlight(client)
 end
 
-local ok, cmp_capabilities = pcall(function()
-	return require("blink.cmp").get_lsp_capabilities()
-end)
-if ok then
-	M.capabilities = cmp_capabilities
-else
-	M.capabilities = vim.lsp.protocol.make_client_capabilities()
-end
+M.capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 M.capabilities = vim.tbl_deep_extend("force", M.capabilities, {
 	textDocument = {
