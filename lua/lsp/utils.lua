@@ -48,7 +48,8 @@ function M.on_attach(client, bufnr)
 	setup_document_highlight(client)
 end
 
-M.capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- M.capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 M.capabilities = vim.tbl_deep_extend("force", M.capabilities, {
 	textDocument = {
