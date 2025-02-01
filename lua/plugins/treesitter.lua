@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
   "nvim-treesitter/nvim-treesitter",
   config = function()
@@ -11,7 +12,6 @@ return {
 
         "hyprlang",
 
-        "latex",
         "markdown",
         "markdown_inline",
 
@@ -23,6 +23,7 @@ return {
 
         "toml",
         "json",
+        "xml",
         "yaml",
       },
       highlight = {
@@ -46,5 +47,5 @@ return {
   lazy = true,
   event = { "BufReadPre", "InsertEnter" },
   cmd = { "TSInstall" },
-  dependencies = { "windwp/nvim-ts-autotag" },
+  dependencies = { "windwp/nvim-ts-autotag","folke/ts-comments.nvim" },
 }

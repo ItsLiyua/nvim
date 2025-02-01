@@ -37,5 +37,13 @@ return {
 			version = "*",
 			opts = require("lsp.cmp"),
 		},
+		{
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- Will be merged with base neovim soon. Then the plugin can be removed.
+			config = function()
+				vim.keymap.set("n", "<leader>dt", function()
+					require("lsp_lines").toggle()
+				end, { desc = "Toggle virtual diagnostics text" })
+			end,
+		},
 	},
 }
