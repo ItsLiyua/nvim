@@ -48,14 +48,14 @@ return {
 
 				local cmp_confirm_or_jump = function(select)
 					return cmp.mapping(function(fallback)
-							if luasnip.expand_or_jumpable() then
-								luasnip.expand_or_jump()
-							elseif cmp.visible() then
-								if cmp.get_selected_entry() ~= nil or select then
-									cmp.confirm({ select = select })
-								else
-									fallback()
-								end
+						if luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif cmp.visible() then
+							if cmp.get_selected_entry() ~= nil or select then
+								cmp.confirm({ select = select })
+							else
+								fallback()
+							end
 						else
 							fallback()
 						end
@@ -71,6 +71,22 @@ return {
 					window = {
 						completion = cmp.config.window.bordered(),
 						documentation = cmp.config.window.bordered(),
+					},
+					---@diagnostic disable-next-line: missing-fields
+					formatting = {
+						format = function(entry, vim_item)
+							vim_item.kind =
+								string.format("%s %s", require("utils").kind_icons[vim_item.kind], vim_item.kind)
+							vim_item.menu = ({
+								lazydev = "[LazyDev]",
+								nvim_lsp = "[LSP]",
+								luasnip = "[LuaSnip]",
+								path = "[Path]",
+								calc = "[Calc]",
+								buffer = "[Buffer]",
+							})[entry.source.name]
+							return vim_item
+						end,
 					},
 					mapping = {
 						["<CR>"] = cmp_confirm_or_jump(false),
