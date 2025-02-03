@@ -26,6 +26,7 @@ return {
 				require("conform").setup({
 					formatters_by_ft = require("lsp.conform").formatters_by_ft,
 					formatters = require("lsp.conform").formatter_conf,
+					format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 				})
 			end,
 		},
@@ -110,7 +111,12 @@ return {
 						{ name = "luasnip" },
 						{ name = "calc" },
 						{ name = "path" },
-						{ name = "buffer" },
+						{
+							name = "buffer",
+							option = {
+								keyword_pattern = [[\k\+]],
+							},
+						},
 					}),
 				})
 			end,

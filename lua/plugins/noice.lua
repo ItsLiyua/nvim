@@ -41,6 +41,13 @@ return {
 				},
 				opts = { skip = true },
 			},
+			{
+				filter = {
+					event = "msg_show",
+					find = " Compilation completed!",
+				},
+				opts = { skip = true },
+			},
 		},
 		lsp = {
 			override = {
