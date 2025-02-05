@@ -26,7 +26,7 @@ return {
 				require("conform").setup({
 					formatters_by_ft = require("lsp.conform").formatters_by_ft,
 					formatters = require("lsp.conform").formatter_conf,
-					format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+					format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
 				})
 			end,
 		},
@@ -78,14 +78,18 @@ return {
 						format = function(entry, vim_item)
 							vim_item.kind =
 								string.format("%s %s", require("utils").kind_icons[vim_item.kind], vim_item.kind)
-							vim_item.menu = ({
-								lazydev = "[LazyDev]",
-								nvim_lsp = "[LSP]",
-								luasnip = "[LuaSnip]",
-								path = "[Path]",
-								calc = "[Calc]",
-								buffer = "[Buffer]",
-							})[entry.source.name]
+							if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= "" then
+								vim_item.menu = entry.completion_item.detail
+							else
+								vim_item.menu = ({
+									lazydev = "[LazyDev]",
+									nvim_lsp = "[LSP]",
+									luasnip = "[LuaSnip]",
+									path = "[Path]",
+									calc = "[Calc]",
+									buffer = "[Buffer]",
+								})[entry.source.name]
+							end
 							return vim_item
 						end,
 					},
