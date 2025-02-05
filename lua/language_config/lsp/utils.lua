@@ -8,7 +8,7 @@ local function setup_lsp_keymaps(_client, bufnr)
 		{
 			"K",
 			function()
----@diagnostic disable-next-line: redundant-parameter
+				---@diagnostic disable-next-line: redundant-parameter
 				vim.lsp.buf.hover({ border = "rounded" })
 			end,
 			desc = "Hover",
@@ -58,6 +58,8 @@ M.capabilities = vim.tbl_deep_extend("force", M.capabilities, {
 		},
 	},
 })
+
+M.capabilities = vim.tbl_deep_extend("force", M.capabilities, require("lsp-file-operations").default_capabilities())
 
 function M.run_all(...)
 	local fns = { ... }
