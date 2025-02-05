@@ -11,7 +11,7 @@ return {
 		dap.listeners.before.event_terminated.dapui_config = dapui.close
 		dap.listeners.before.event_exited.dapui_config = dapui.close
 
-		local cfgs = require("lsp.dap").adapter_configs
+		local cfgs = require("language_config.dap").adapter_configs
 		for _, config in pairs(cfgs) do
 			dap.adapters[config.name] = config.adapter
 			dap.configurations[config.name] = config.configuration

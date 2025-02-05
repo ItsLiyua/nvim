@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("lsp")
+		require("language_config/lsp")
 	end,
 	dependencies = {
 		{
@@ -24,8 +24,8 @@ return {
 			},
 			config = function()
 				require("conform").setup({
-					formatters_by_ft = require("lsp.conform").formatters_by_ft,
-					formatters = require("lsp.conform").formatter_conf,
+					formatters_by_ft = require("language_config.conform").formatters_by_ft,
+					formatters = require("language_config.conform").formatter_conf,
 					format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
 				})
 			end,

@@ -1,6 +1,6 @@
 local mason_lspconfig = require("mason-lspconfig")
 
-local server_configs = require("lsp.lsps").server_configs
+local server_configs = require("language_config.lsp.lsps").server_configs
 
 local function get_servers_to_install()
 	local server_names_configured = vim.tbl_keys(server_configs)
@@ -39,12 +39,12 @@ local function tbl_values_deep(table)
 end
 
 local function get_formatters_to_install()
-	local formatters = require("lsp.conform").formatters_by_ft
+	local formatters = require("language_config.conform").formatters_by_ft
 	return tbl_values_deep(formatters)
 end
 
 local function get_adapters_to_install()
-	return vim.tbl_keys(require("lsp.dap").adapter_configs)
+	return vim.tbl_keys(require("language_config.dap").adapter_configs)
 end
 
 ---@diagnostic disable-next-line: missing-fields

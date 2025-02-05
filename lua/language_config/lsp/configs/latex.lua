@@ -1,6 +1,6 @@
 ---@diagnostic disable: missing-fields
 local M = {}
-local base = require("lsp.utils").base_config_no_format
+local base = require("language_config.lsp.utils").base_config_no_format
 
 M.config = vim.tbl_extend("force", base, {
 	on_attach = function(client, bufnr)
