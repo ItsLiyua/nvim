@@ -3,33 +3,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"bash",
-				"lua",
-
-				"kotlin",
-				"java",
-
-				"hyprlang",
-
-				"latex",
-
-				"markdown",
-				"markdown_inline",
-
-				"html",
-				"css",
-				"javascript",
-				"typescript",
-				"tsx",
-
-				"toml",
-				"json",
-				"xml",
-				"yaml",
-
-				"vimdoc",
-			},
+			ensure_installed = require("language_config.treesitter").ts_langs,
 			highlight = {
 				enable = true,
 				disable = { "latex" },
