@@ -44,7 +44,7 @@ local function get_formatters_to_install()
 end
 
 local function get_adapters_to_install()
-	return vim.tbl_keys(require("language_config.dap").adapter_configs)
+	return vim.tbl_keys(require("language_config.dap.dap").adapter_configs)
 end
 
 ---@diagnostic disable-next-line: missing-fields
