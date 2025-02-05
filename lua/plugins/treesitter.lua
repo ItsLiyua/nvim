@@ -27,6 +27,8 @@ return {
 				"json",
 				"xml",
 				"yaml",
+
+				"vimdoc",
 			},
 			highlight = {
 				enable = true,
