@@ -24,8 +24,8 @@ return {
 			},
 			config = function()
 				require("conform").setup({
-					formatters_by_ft = require("language_config.conform").formatters_by_ft,
-					formatters = require("language_config.conform").formatter_conf,
+					formatters_by_ft = require("language_parser").confrom_formatters,
+					formatters = require("language_parser").conform_formatter_opts,
 					format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
 				})
 			end,

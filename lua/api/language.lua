@@ -1,9 +1,10 @@
 local utils = require("utils")
 local M = {
+	ft = {},
 	treesitter = nil,
 	lsp = {},
 	dap = nil,
-	formatter = {},
+	formatters = {},
 }
 M.__index = M
 
@@ -14,23 +15,3 @@ M.new = function(config)
 end
 
 return M
--- return {
--- 	treesitter = "",
--- 	lsp = {
--- 		{
--- 			name = "",
--- 			cmd = nil, -- {cmd}
--- 			config_base = "default", -- default or defdault_no_fmt
--- 			config = {},
--- 		},
--- 	},
--- 	dap = {
--- 		name = "",
--- 		adapter = nil,
--- 		config = {},
--- 	},
--- 	formatter = {
--- 		["filetype-1"] = { "fmt1", "fmt2" },
--- 		["filetype-2"] = { "fmt3", "fmt4" },
--- 	},
--- }
