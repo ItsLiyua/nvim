@@ -1,5 +1,6 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	ft = require("language_parser").fts,
 	config = function()
 		local mti_tools = require("language_parser").mti_tools
 

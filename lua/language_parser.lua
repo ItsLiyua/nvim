@@ -3,14 +3,23 @@ local langs = {
 	require("languages.lua"),
 }
 
-local M = {}
+local M = {
+	fts = {},
+	ts_ensure_installed = {},
+	lsp_configs = {},
+	dap_configs = {},
+	confrom_formatters = {},
+	conform_formatter_opts = {},
+	mti_tools = {},
+}
 
-M.ts_ensure_installed = {}
-M.lsp_configs = {}
-M.dap_configs = {}
-M.confrom_formatters = {}
-M.conform_formatter_opts = {}
-M.mti_tools = {}
+local function addFt(lang)
+	for _, ft in pairs(lang.ft) do
+		if not vim.tbl_contains(M.fts, ft) then
+			M.fts[#M.fts + 1] = ft
+		end
+	end
+end
 
 local function parseTS(lang)
 	local ts = lang.treesitter
@@ -47,6 +56,7 @@ local function parseLsp(lang)
 end
 
 for _, lang in pairs(langs) do
+	addFt(lang)
 	parseTS(lang)
 	parseFmt(lang)
 	parseLsp(lang)
