@@ -18,6 +18,7 @@ return {
 			nvim_cmp = true,
 			noice = true,
 			notify = true,
+			indent_blankline = true,
 			lsp = {
 				enabled = true,
 				virtual_text = {
@@ -48,7 +49,7 @@ return {
 		},
 		custom_highlights = function(C)
 			return {
-				["hl-IblScope"] = { fg = C.color3 },
+				["IblScope"] = { fg = C.color3, bg = C.color3, sp = C.color3 },
 			}
 		end,
 	},

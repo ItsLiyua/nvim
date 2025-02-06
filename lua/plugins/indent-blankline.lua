@@ -5,12 +5,12 @@ return {
 	main = "ibl",
 	opts = {
 		indent = { char = "▎" },
-		exclude = { filetypes = { "dashboard" } },
-		-- scope = {
-		-- 	enabled = true,
-		-- 	char = "▎",
-		-- 	show_start = true,
-		-- 	show_end = true,
-		-- },
+		exclude = { filetypes = require("utils").non_filetypes },
+		scope = {
+			enabled = true,
+			show_start = true,
+			show_end = true,
+			highlight = "Todo",
+		},
 	},
 }
