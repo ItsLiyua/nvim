@@ -1,5 +1,6 @@
 local langs = {
 	require("languages.kotlin"),
+	require("languages.lua"),
 }
 
 local M = {}

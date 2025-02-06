@@ -2,33 +2,13 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("language_config/lsp")
+		-- require("language_config/lsp")
 	end,
 	dependencies = {
 		{
 			"williamboman/mason.nvim",
 			config = true,
 			build = ":MasonUpdate",
-		},
-		{
-			"stevearc/conform.nvim",
-			keys = {
-				{
-					"<leader>cf",
-					function()
-						require("conform").format({ async = true, lsp_fallback = true })
-					end,
-					mode = { "n", "v" },
-					desc = "Format file",
-				},
-			},
-			config = function()
-				require("conform").setup({
-					formatters_by_ft = require("language_parser").confrom_formatters,
-					formatters = require("language_parser").conform_formatter_opts,
-					format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
-				})
-			end,
 		},
 		{ "williamboman/mason-lspconfig.nvim", config = true },
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
