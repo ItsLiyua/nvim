@@ -3,7 +3,8 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = require("language_config.treesitter").ts_langs,
+			-- ensure_installed = require("language_config.treesitter").ts_langs,
+			ensure_installed = require("language_parser").ts_ensure_installed,
 			highlight = {
 				enable = true,
 				disable = { "latex" },

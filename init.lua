@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("options")
 require("keymap")
+require("language_parser")
 
 require("lazy").setup("plugins", {
 	checker = {
