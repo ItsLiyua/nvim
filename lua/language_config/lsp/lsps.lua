@@ -11,6 +11,7 @@ M.server_configs = {
 	ltex = require("language_config.lsp.configs.latex").config,
 	cssmodules_ls = utils.base_config_no_format,
 	ts_ls = utils.base_config_no_format,
+	jdtls = require("language_config.lsp.configs.java").config,
 }
 
 return M
