@@ -39,13 +39,17 @@ end
 local function parseLsp(lang)
 	local lsps = lang.lsp
 	for _, lsp in pairs(lsps) do
-		M.mti_tools = vim.tbl_extend("force", M.mti_tools, { lsp.name })
+		if not vim.tbl_contains(M.mti_tools, lsp.name) then
+			M.mti_tools[#M.mti_tools + 1] = lsp.name
+		end
+		M.lsp_configs[#M.lsp_configs + 1] = lsp
 	end
 end
 
 for _, lang in pairs(langs) do
 	parseTS(lang)
 	parseFmt(lang)
+	parseLsp(lang)
 end
 
 return M

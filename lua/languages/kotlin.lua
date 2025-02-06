@@ -6,10 +6,5 @@ return require("api.language").new({
 			prepend_args = { "--editorconfig=~/.config/nvim/settings/linters/ktlint.cfg" },
 		},
 	},
-  lsp = {
-    {
-      name = "kotlin-language-server",
-      base_config = "default_no_fmt",
-    }
-  }
+	lsp = { { name = "kotlin-language-server" } },
 })
