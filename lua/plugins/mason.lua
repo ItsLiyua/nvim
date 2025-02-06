@@ -18,10 +18,6 @@ return {
 					config = true,
 					build = ":MasonUpdate",
 				},
-				{
-					"jay-babu/mason-nvim-dap.nvim",
-					config = true,
-				},
 			},
 		},
 	},
