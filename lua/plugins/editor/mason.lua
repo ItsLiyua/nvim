@@ -8,7 +8,9 @@ return {
 			require("utils").send_log(i .. ":" .. v)
 		end
 
-		require("mason-tool-installer").setup({ ensure_installed = mti_tools })
+    local mti = require("mason-tool-installer")
+	  mti.setup({ ensure_installed = mti_tools })
+    mti.check_install(true, true)
 	end,
 	dependencies = {
 		{

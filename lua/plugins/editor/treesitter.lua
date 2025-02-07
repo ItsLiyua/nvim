@@ -27,8 +27,7 @@ return {
 		})
 	end,
 	build = ":TSUpdate",
-	lazy = true,
-	event = { "BufReadPre", "InsertEnter" },
 	cmd = { "TSInstall" },
+  ft = require("language_parser").fts,
 	dependencies = { "windwp/nvim-ts-autotag", "folke/ts-comments.nvim" },
 }
