@@ -27,4 +27,4 @@ vim.opt.splitbelow = true
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = ""
 
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_text = true })
