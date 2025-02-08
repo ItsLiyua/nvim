@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-  ft = require("language_parser").fts,
+	ft = require("language_parser").fts,
 	config = function()
 		local lspconfig = require("lspconfig")
 		local lsps = require("language_parser").lsp_configs
@@ -14,6 +14,12 @@ return {
 
 			lspconfig[lsp.name].setup(vim.tbl_deep_extend("force", base_config, cfg))
 			require("utils").send_log('Configured LSP "' .. lsp.name .. '"')
+		end
+
+		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
 	end,
 	dependencies = {
