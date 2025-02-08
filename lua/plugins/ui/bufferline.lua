@@ -2,7 +2,7 @@ return {
 	"akinsho/bufferline.nvim",
 	version = "*",
 	dependencies = { "nvim-tree/nvim-web-devicons", "RedsXDD/neopywal.nvim", "folke/which-key.nvim" },
-	event = { "BufAdd", "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local colors = require("neopywal").get_colors()
 		local indicator = colors.color4
