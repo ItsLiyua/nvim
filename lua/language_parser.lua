@@ -3,6 +3,7 @@ local langs = {
   require("languages.lua"),
   require("languages.latex"),
   require("languages.ts"),
+  require("languages.java"),
 }
 
 local M = {
