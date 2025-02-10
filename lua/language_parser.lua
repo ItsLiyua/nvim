@@ -62,7 +62,15 @@ local function parseLsp(lang)
 		else
 			utils.send_log('WARN: LSP "' .. lsp.name .. '" has two configurations.')
 		end
+
 		M.lsp_configs[#M.lsp_configs + 1] = lsp
+		if lsp.format ~= nil and not lsp.format then
+			lsp.on_attach = function(client, bufnr)
+				lsp.on_attach(client, bufnr)
+				require("lsp_utils").disable_formatting(client)
+			end
+		end
+
 		utils.send_log("Configured LSP: " .. lsp.name)
 	end
 end
