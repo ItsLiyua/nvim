@@ -1,7 +1,7 @@
 return require("api.language").new({
   ft = { "java" },
   treesitter = "java",
-  -- formatters = { ["google-java-format"] = {} },
+  formatters = { ["google-java-format"] = {} },
   lsp = {
     {
       name = "jdtls",
