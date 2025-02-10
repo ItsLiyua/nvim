@@ -4,6 +4,7 @@ local langs = {
   require("languages.latex"),
   require("languages.ts"),
   require("languages.java"),
+  require("languages.hyprlang"),
 }
 
 local M = {
@@ -58,11 +59,18 @@ local function parseLsp(lang)
   end
 end
 
+local function runSetup(lang)
+  if lang.setup ~= nil then
+    lang.setup()
+  end
+end
+
 for _, lang in pairs(langs) do
   addFt(lang)
   parseTS(lang)
   parseFmt(lang)
   parseLsp(lang)
+  runSetup(lang)
 end
 
 return M

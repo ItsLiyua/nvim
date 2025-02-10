@@ -5,6 +5,7 @@ local M = {
 	lsp = {},
 	dap = nil,
 	formatters = {},
+  setup = nil
 }
 M.__index = M
 
