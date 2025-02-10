@@ -41,6 +41,7 @@ return {
 						key = "f",
 					},
 					{ action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+					{ action = "Mason", desc = " Mason", icon = "󱊈 ", key = "m" },
 					{ action = "qa", desc = " Quit", icon = " ", key = "q" },
 				},
 				footer = {},
@@ -57,7 +58,7 @@ return {
 							end
 						end
 					end
-          require("dashboard"):instance()
+					require("dashboard"):instance()
 				end,
 			})
 		end, 0)
