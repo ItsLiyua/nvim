@@ -19,8 +19,8 @@ return require("api.language").new({
 						},
 					},
 				},
-				format = false,
 			},
+			format = false,
 		},
 	},
 })

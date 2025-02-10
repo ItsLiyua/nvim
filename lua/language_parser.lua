@@ -5,6 +5,7 @@ local langs = {
 	require("languages.ts"),
 	require("languages.java"),
 	require("languages.hyprlang"),
+	require("languages.bash"),
 }
 
 local utils = require("utils")
@@ -14,7 +15,7 @@ local M = {
 	ts_ensure_installed = {},
 	lsp_configs = {},
 	dap_configs = {},
-	confrom_formatters = {},
+	conform_formatters = {},
 	conform_formatter_opts = {},
 	mti_tools = {},
 }
@@ -37,21 +38,31 @@ local function parseTS(lang)
 end
 
 local function parseFmt(lang)
-	local fts = lang.ft
-	local fmts = lang.formatters
-	for fmt, _ in pairs(fmts) do
-		for _, ft in pairs(fts) do
-			if M.confrom_formatters[ft] == nil then
-				M.confrom_formatters[ft] = { fmt }
-			else
-				M.confrom_formatters[ft] = vim.tbl_extend("force", M.confrom_formatters[ft], { fmt })
-			end
-			M.mti_tools = vim.tbl_extend("force", M.mti_tools, { fmt })
-			utils.send_log("Formatter configured: " .. fmt)
-		end
-	end
+	local filetypes = lang.ft
+	local formatters = lang.formatters
 
-	M.conform_formatter_opts = vim.tbl_extend("error", M.conform_formatter_opts, fmts)
+	for formatter, config in pairs(formatters) do
+		for _, filetype in ipairs(filetypes) do
+			if not vim.tbl_contains(M.conform_formatters, formatter) then
+				M.conform_formatters[filetype] = {}
+			end
+			M.conform_formatters[filetype] = vim.tbl_extend("force", M.conform_formatters[filetype], { formatter })
+		end
+
+		if M.conform_formatter_opts[formatter] ~= nil then
+			utils.send_log(
+				'WARN: Formatter "'
+					.. formatter('" configured twice. Overwriting with config from "')
+					.. filetypes[1]
+					.. '"'
+			)
+		end
+		M.conform_formatter_opts[formatter] = config
+
+		M.mti_tools[#M.mti_tools + 1] = formatter
+
+		utils.send_log("Formatter configured: " .. formatter)
+	end
 end
 
 local function parseLsp(lang)
