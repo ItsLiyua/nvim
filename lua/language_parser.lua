@@ -8,6 +8,8 @@ local langs = {
 	require("languages.bash"),
 	require("languages.yaml"),
 	require("languages.json"),
+	require("languages.xml"),
+	require("languages.markdown"),
 }
 
 local utils = require("utils")
@@ -103,5 +105,15 @@ for _, lang in pairs(langs) do
 
 	utils.send_log('Initialized language for "' .. lang.ft[1] .. '"\n')
 end
+
+local new_tools = {}
+
+for _, tool in pairs(M.mti_tools) do
+	if not vim.tbl_contains(new_tools, tool) then
+		new_tools[#new_tools + 1] = tool
+	end
+end
+
+M.mti_tools = new_tools
 
 return M

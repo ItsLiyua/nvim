@@ -8,7 +8,7 @@ return {
 			ensure_installed = mti_tools,
 			auto_upsate = true,
 		})
-		mti.check_install(true, true)
+		mti.check_install(true, false)
 	end,
 	dependencies = {
 		{

@@ -1,10 +1,10 @@
 return require("api.language").new({
-	ft = { "json" },
-	treesitter = "json",
-	formatters = { prettierd = {} },
+	ft = { "xml" },
+	treesitter = "xml",
+	formatters = { xmlformatter = {} },
 	lsp = {
 		{
-			name = "jsonls",
+			name = "lemminx",
 			config = {},
 			format = false,
 		},

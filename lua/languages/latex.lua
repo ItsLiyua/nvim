@@ -15,6 +15,7 @@ return require("api.language").new({
 				},
 				settings = {
 					ltex = {
+						enabled = { "latex", "bibtex", "context", "context.tex" },
 						language = "en-US",
 					},
 				},
