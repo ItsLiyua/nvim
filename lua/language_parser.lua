@@ -7,6 +7,7 @@ local langs = {
 	require("languages.hyprlang"),
 	require("languages.bash"),
 	require("languages.yaml"),
+	require("languages.json"),
 }
 
 local utils = require("utils")
@@ -89,11 +90,17 @@ end
 
 for _, lang in pairs(langs) do
 	utils.send_log('Initializing language for "' .. lang.ft[1] .. '"')
-	M.fts = vim.tbl_extend("force", M.fts, lang.ft)
 	parseTS(lang)
 	parseFmt(lang)
 	parseLsp(lang)
 	runSetup(lang)
+
+	for _, ft in pairs(lang.ft) do
+		if not vim.tbl_contains(M.fts, ft) then
+			M.fts[#M.fts + 1] = ft
+		end
+	end
+
 	utils.send_log('Initialized language for "' .. lang.ft[1] .. '"\n')
 end
 
