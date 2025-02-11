@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	ft = require("language_parser").fts,
+	ft = require("language_parser").lsp_filetypes,
 	config = function()
 		local lspconfig = require("lspconfig")
 		local lsps = require("language_parser").lsp_configs

@@ -28,6 +28,6 @@ return {
 	end,
 	build = ":TSUpdate",
 	cmd = { "TSInstall" },
-  ft = require("language_parser").fts,
+	ft = require("language_parser").ts_filetypes,
 	dependencies = { "windwp/nvim-ts-autotag", "folke/ts-comments.nvim" },
 }

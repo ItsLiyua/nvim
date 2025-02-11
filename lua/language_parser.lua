@@ -11,29 +11,24 @@ local langs = {
 local utils = require("utils")
 
 local M = {
-	fts = {},
+	ts_filetypes = {},
+	formatter_filetypes = {},
+	lsp_filetypes = {},
+	dap_filetypes = {},
 	ts_ensure_installed = {},
 	lsp_configs = {},
 	dap_configs = {},
-	conform_formatters = {},
-	conform_formatter_opts = {},
+	conform_fmt_by_ft = {},
+	conform_fmt_cfg = {},
 	mti_tools = {},
 }
-
-local function addFt(lang)
-	for _, ft in pairs(lang.ft) do
-		if not vim.tbl_contains(M.fts, ft) then
-			M.fts[#M.fts + 1] = ft
-		end
-		utils.send_log("Configured Filetype: " .. ft)
-	end
-end
 
 local function parseTS(lang)
 	local ts = lang.treesitter
 	if ts ~= nil and ts ~= "" then
 		M.ts_ensure_installed[#M.ts_ensure_installed + 1] = ts
-		utils.send_log("Added TreeSitter language: " .. ts)
+		M.ts_filetypes = vim.tbl_extend("force", M.ts_filetypes, lang.ft)
+		utils.send_log("Added Treesitter language: " .. ts)
 	end
 end
 
@@ -43,13 +38,13 @@ local function parseFmt(lang)
 
 	for formatter, config in pairs(formatters) do
 		for _, filetype in ipairs(filetypes) do
-			if not vim.tbl_contains(M.conform_formatters, formatter) then
-				M.conform_formatters[filetype] = {}
+			if not vim.tbl_contains(M.conform_fmt_by_ft, filetype) then
+				M.conform_fmt_by_ft[filetype] = {}
 			end
-			M.conform_formatters[filetype] = vim.tbl_extend("force", M.conform_formatters[filetype], { formatter })
+			M.conform_fmt_by_ft[filetype] = vim.tbl_extend("force", M.conform_fmt_by_ft[filetype], { formatter })
 		end
 
-		if M.conform_formatter_opts[formatter] ~= nil then
+		if M.conform_fmt_cfg[formatter] ~= nil then
 			utils.send_log(
 				'WARN: Formatter "'
 					.. formatter('" configured twice. Overwriting with config from "')
@@ -57,8 +52,8 @@ local function parseFmt(lang)
 					.. '"'
 			)
 		end
-		M.conform_formatter_opts[formatter] = config
-
+		M.conform_fmt_cfg[formatter] = config
+		M.formatter_filetypes = vim.tbl_extend("force", M.formatter_filetypes, lang.ft)
 		M.mti_tools[#M.mti_tools + 1] = formatter
 
 		utils.send_log("Formatter configured: " .. formatter)
@@ -82,6 +77,8 @@ local function parseLsp(lang)
 			end
 		end
 
+		M.lsp_filetypes = vim.tbl_extend("force", M.lsp_filetypes, lang.ft)
+
 		utils.send_log("Configured LSP: " .. lsp.name)
 	end
 end
@@ -95,7 +92,6 @@ end
 
 for _, lang in pairs(langs) do
 	utils.send_log('Initializing language for "' .. lang.ft[1] .. '"')
-	addFt(lang)
 	parseTS(lang)
 	parseFmt(lang)
 	parseLsp(lang)
