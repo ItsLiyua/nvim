@@ -11,6 +11,7 @@ local langs = {
 local utils = require("utils")
 
 local M = {
+  fts = {},
 	ts_filetypes = {},
 	formatter_filetypes = {},
 	lsp_filetypes = {},
@@ -92,6 +93,7 @@ end
 
 for _, lang in pairs(langs) do
 	utils.send_log('Initializing language for "' .. lang.ft[1] .. '"')
+  M.fts = vim.tbl_extend("force", M.fts, lang.ft)
 	parseTS(lang)
 	parseFmt(lang)
 	parseLsp(lang)
