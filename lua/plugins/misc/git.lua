@@ -1,6 +1,7 @@
 return {
 	{
 		"isakbm/gitgraph.nvim",
+		enabled = false,
 		dependencies = { "sindrets/diffview.nvim" },
 		opts = {
 			symbols = {
@@ -62,6 +63,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "Gitsigns" },
+		enabled = false,
 		keys = {
 			{
 				"<leader>vb",
