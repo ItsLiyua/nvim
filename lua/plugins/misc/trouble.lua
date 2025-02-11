@@ -15,7 +15,7 @@ return {
 			desc = "Toggle diagnostics for current window",
 		},
 		{ "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Toggle quickfix" },
-		{ "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Toggle loclist" },
+		-- { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Toggle loclist" },
 		{ "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Toggle todo list" },
 	},
 }
