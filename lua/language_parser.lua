@@ -6,12 +6,13 @@ local langs = {
 	require("languages.java"),
 	require("languages.hyprlang"),
 	require("languages.bash"),
+	require("languages.yaml"),
 }
 
 local utils = require("utils")
 
 local M = {
-  fts = {},
+	fts = {},
 	ts_filetypes = {},
 	formatter_filetypes = {},
 	lsp_filetypes = {},
@@ -44,15 +45,6 @@ local function parseFmt(lang)
 			end
 			M.conform_fmt_by_ft[filetype] = vim.tbl_extend("force", M.conform_fmt_by_ft[filetype], { formatter })
 		end
-
-		if M.conform_fmt_cfg[formatter] ~= nil then
-			utils.send_log(
-				'WARN: Formatter "'
-					.. formatter('" configured twice. Overwriting with config from "')
-					.. filetypes[1]
-					.. '"'
-			)
-		end
 		M.conform_fmt_cfg[formatter] = config
 		M.formatter_filetypes = vim.tbl_extend("force", M.formatter_filetypes, lang.ft)
 		M.mti_tools[#M.mti_tools + 1] = formatter
@@ -78,7 +70,11 @@ local function parseLsp(lang)
 			end
 		end
 
-		M.lsp_filetypes = vim.tbl_extend("force", M.lsp_filetypes, lang.ft)
+		for _, ft in ipairs(lang.ft) do
+			if not vim.tbl_contains(M.lsp_filetypes, ft) then
+				M.lsp_filetypes[#M.lsp_filetypes + 1] = ft
+			end
+		end
 
 		utils.send_log("Configured LSP: " .. lsp.name)
 	end
@@ -93,7 +89,7 @@ end
 
 for _, lang in pairs(langs) do
 	utils.send_log('Initializing language for "' .. lang.ft[1] .. '"')
-  M.fts = vim.tbl_extend("force", M.fts, lang.ft)
+	M.fts = vim.tbl_extend("force", M.fts, lang.ft)
 	parseTS(lang)
 	parseFmt(lang)
 	parseLsp(lang)
