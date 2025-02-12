@@ -32,6 +32,5 @@ return {
 			vim.g.mkdp_theme = "dark"
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
-		ft = { "markdown" },
 	},
 }
