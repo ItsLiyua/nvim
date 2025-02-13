@@ -27,17 +27,6 @@ local function setup_document_highlight(client)
 	if not client.supports_method("textDocument/documentHighlight") then
 		return
 	end
-
-	vim.cmd([[
-    hi LspReferenceText  cterm=bold ctermbg=red guibg=#404040
-    hi LspReferenceRead  cterm=bold ctermbg=red guibg=#404040
-    hi LspReferenceWrite cterm=bold ctermbg=red guibg=#404040
-    augroup LSPDocumentHighlight
-      autocmd! * <buffer>
-      autocmd CursorHold,CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-  ]])
 end
 
 ---@diagnostic disable-next-line: unused-local
