@@ -26,6 +26,8 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		keys = { { "<leader>cp", "<cmd>MarkdownPreview<CR>", desc = "Preview Markdown in Browser" } },
+		ft = { "markdown" },
 		build = "cd app && yarn install",
 		init = function()
 			vim.g.mkdp_auto_start = 0
