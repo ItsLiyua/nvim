@@ -6,6 +6,7 @@ return {
 			path = {
 				relative_to = function(_, win)
 					local filter = {
+						"src",
 						"src/main/java",
 						"src/main/kotlin",
 						"src/client/java",
