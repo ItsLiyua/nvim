@@ -27,4 +27,7 @@ vim.opt.splitbelow = true
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = ""
 
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 20
+
 vim.diagnostic.config({ virtual_text = true })
