@@ -3,14 +3,12 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			-- ensure_installed = require("language_config.treesitter").ts_langs,
 			ensure_installed = require("language_parser").ts_ensure_installed,
 			highlight = {
 				enable = true,
 				disable = { "latex" },
 			},
 			indent = { enable = true },
-			autotag = { enable = true },
 			incremental_selection = {
 				enable = true,
 				keymaps = {
@@ -22,8 +20,9 @@ return {
 			},
 		})
 
-		vim.filetype.add({
-			pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+		require("nvim-ts-autotag").setup({
+			enable_close = true,
+			enable_rename = true,
 		})
 	end,
 	build = ":TSUpdate",

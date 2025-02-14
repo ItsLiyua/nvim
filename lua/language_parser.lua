@@ -30,10 +30,21 @@ local M = {
 
 local function parseTS(lang)
 	local ts = lang.treesitter
-	if ts ~= nil and ts ~= "" then
-		M.ts_ensure_installed[#M.ts_ensure_installed + 1] = ts
+
+	local process = function(ts_name)
+		M.ts_ensure_installed[#M.ts_ensure_installed + 1] = ts_name
 		M.ts_filetypes = vim.tbl_extend("force", M.ts_filetypes, lang.ft)
-		utils.send_log("Added Treesitter language: " .. ts)
+		utils.send_log("Added Treesitter language: " .. ts_name)
+	end
+
+	if ts ~= nil and ts ~= "" then
+		if type(ts) == "table" then
+			for _, ts_name in pairs(ts) do
+				process(ts_name)
+			end
+		else
+			process(ts)
+		end
 	end
 end
 
