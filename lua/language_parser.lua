@@ -10,6 +10,7 @@ local langs = {
 	require("languages.json"),
 	require("languages.xml"),
 	require("languages.markdown"),
+	require("languages.css"),
 }
 
 local utils = require("utils")
