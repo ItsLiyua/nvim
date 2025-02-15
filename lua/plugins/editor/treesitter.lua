@@ -21,8 +21,10 @@ return {
 		})
 
 		require("nvim-ts-autotag").setup({
-			enable_close = true,
-			enable_rename = true,
+			opts = {
+				enable_close = true,
+				enable_rename = true,
+			},
 		})
 	end,
 	build = ":TSUpdate",
