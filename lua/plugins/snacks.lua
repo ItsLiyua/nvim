@@ -28,7 +28,15 @@ return {
 					and not vim.tbl_contains(require("utils").non_filetypes, vim.bo[buf].filetype)
 			end,
 		},
-		input = { enabled = false },
+		input = {
+			enabled = true,
+			icon = " ",
+			icon_hl = "SnacksInputIcon",
+			icon_pos = "left",
+			prompt_pos = "left",
+			win = { style = "input" },
+			expand = true,
+		},
 		picker = { enabled = false },
 		notifier = { enabled = false },
 		quickfile = { enabled = false },
