@@ -3,13 +3,9 @@ return {
 	lazy = false,
 	priority = 1000,
 	opts = {
-		use_wallust = true,
 		transparent_background = true,
 		custom_highlights = function(C)
-			return {
-				-- IblScope = { fg = C.color3, bg = C.color3, sp = C.color3 },
-				-- CursorLine = { bg = C.none },
-			}
+			return { all = { IblScope = { fg = C.color3 } } }
 		end,
 		plugins = {
 			dashnoard = true,

@@ -10,7 +10,6 @@ return {
 			enabled = true,
 			show_start = true,
 			show_end = true,
-			highlight = "Todo",
 		},
 	},
 }
