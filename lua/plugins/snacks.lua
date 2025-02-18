@@ -99,6 +99,7 @@ return {
 					and not vim.tbl_contains(require("utils").non_filetypes, vim.bo[buf].filetype)
 			end,
 		},
+		image = { enabled = true },
 		input = {
 			enabled = true,
 			icon = " ",
