@@ -2,6 +2,15 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
+	keys = {
+		{
+			"<leader>v",
+			function()
+				Snacks.lazygit.open()
+			end,
+			desc = "Open git UI",
+		},
+	},
 	---@type snacks.Config
 	opts = {
 		animate = { enabled = true },
@@ -109,6 +118,7 @@ return {
 			win = { style = "input" },
 			expand = true,
 		},
+		lazygit = { enabled = true, configure = true },
 		picker = { enabled = false },
 		notifier = { enabled = false },
 		quickfile = { enabled = false },
