@@ -2,8 +2,21 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	config = function()
+		local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+
+		parser_configs.lua_patterns = {
+			install_info = {
+				url = "https://github.com/OXY2DEV/tree-sitter-lua_patterns",
+				files = { "src/parser.c" },
+				branch = "main",
+			},
+		}
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = require("language_parser").ts_ensure_installed,
+			ensure_installed = vim.tbl_extend(
+				"force",
+				require("language_parser").ts_ensure_installed,
+				{ "regex", "lua_patterns" }
+			),
 			highlight = {
 				enable = true,
 				disable = { "latex" },
