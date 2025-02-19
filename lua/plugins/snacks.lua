@@ -63,6 +63,12 @@ return {
 							require("telescope.builtin").live_grep()
 						end,
 					},
+					{
+						icon = " ",
+						key = "r",
+						desc = "Restore session",
+						action = "<cmd>SessionRestore<CR>",
+					},
 					{ icon = " ", key = "r", desc = "Restore Session", section = "session" },
 					{
 						icon = "󰒲 ",

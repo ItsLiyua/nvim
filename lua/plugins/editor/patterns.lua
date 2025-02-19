@@ -1,7 +1,8 @@
 return {
-  -- NOTE: When deleting this: Remove code from treesitter config for lua_patterns and regex parser
+	-- NOTE: When deleting this: Remove code from treesitter config for lua_patterns and regex parser
 	"OXY2DEV/patterns.nvim",
 	keys = { { "<leader>cp", "<cmd>Pattern explain<CR>", desc = "Explain regex pattern" } },
+	cmd = { "Patterns" },
 	opts = {
 		keymaps = {
 			explain_input = {
@@ -12,6 +13,9 @@ return {
 			explain_preview = {
 				["<ESC>"] = {
 					callback = "close",
+				},
+				["t"] = {
+					callback = "mode_change",
 				},
 			},
 		},
