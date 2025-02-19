@@ -11,10 +11,11 @@ return {
 				branch = "main",
 			},
 		}
+
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = vim.tbl_extend(
 				"force",
-				require("language_parser").ts_ensure_installed,
+				require("liyua.language_parser").ts_ensure_installed,
 				{ "regex", "lua_patterns" }
 			),
 			highlight = {
@@ -42,6 +43,6 @@ return {
 	end,
 	build = ":TSUpdate",
 	cmd = { "TSInstall" },
-	ft = require("language_parser").ts_filetypes,
+	ft = require("liyua.language_parser").ts_filetypes,
 	dependencies = { "windwp/nvim-ts-autotag", "folke/ts-comments.nvim" },
 }

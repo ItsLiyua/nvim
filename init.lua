@@ -12,11 +12,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("options")
-require("keymap")
-require("language_parser")
+require("liyua.options")
+require("liyua.keymap")
+local ok, _ = pcall(function()
+	require("liyua.language_parser")
+end)
+if not ok then
+	vim.notify("Something went wrong initializing the language parsers!", vim.log.levels.ERROR)
+end
 
-require("lazy").setup("plugins", {
+require("lazy").setup("liyua.plugins", {
 	checker = {
 		enabled = true,
 		notify = false,

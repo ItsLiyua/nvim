@@ -11,11 +11,13 @@ return {
 		},
 	},
 	cmd = { "ConformInfo" },
-	ft = require("language_parser").formatter_filetypes,
+	ft = require("liyua.language_parser").formatter_filetypes,
+	event = { "BufWritePre" },
 	config = function()
+		local parser = require("liyua.language_parser")
 		require("conform").setup({
-			formatters_by_ft = require("language_parser").conform_fmt_by_ft,
-			formatters = require("language_parser").conform_fmt_cfg,
+			formatters_by_ft = parser.conform_fmt_by_ft,
+			formatters = parser.conform_fmt_cfg,
 			format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
 		})
 	end,

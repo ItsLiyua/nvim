@@ -1,8 +1,8 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	ft = require("language_parser").fts,
+	ft = require("liyua.language_parser").fts,
 	config = function()
-		local mti_tools = require("language_parser").mti_tools
+		local mti_tools = require("liyua.language_parser").mti_tools
 		local mti = require("mason-tool-installer")
 		mti.setup({
 			ensure_installed = mti_tools,

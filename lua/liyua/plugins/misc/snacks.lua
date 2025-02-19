@@ -14,23 +14,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		animate = { enabled = true },
-		bigfile = {
-			notify = true,
-			size = 1.5 * 1024 * 1024,
-			line_length = 1000,
-			setup = function(ctx)
-				if vim.fn.exists(":NoMatchParen") ~= 0 then
-					vim.cmd([[NoMatchParen]])
-				end
-				require("snacks").util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
-				vim.b.minianimate_disable = true
-				vim.schedule(function()
-					if vim.api.nvim_buf_is_valid(ctx.buf) then
-						vim.bo[ctx.buf].syntax = ctx.ft
-					end
-				end)
-			end,
-		},
+		bigfile = require("liyua.snacks.bigfile"),
 		dashboard = {
 			enabled = true,
 			preset = {
@@ -111,7 +95,7 @@ return {
 				return vim.g.snacks_indent ~= false
 					and vim.b[buf].snacks_indent ~= false
 					and vim.bo[buf].buftype == ""
-					and not vim.tbl_contains(require("utils").non_filetypes, vim.bo[buf].filetype)
+					and not vim.tbl_contains(require("liyua.utils").non_filetypes, vim.bo[buf].filetype)
 			end,
 		},
 		image = { enabled = true },

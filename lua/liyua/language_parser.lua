@@ -1,19 +1,19 @@
 local langs = {
-	require("languages.kotlin"),
-	require("languages.lua"),
-	require("languages.latex"),
-	require("languages.ts"),
-	require("languages.java"),
-	require("languages.hyprlang"),
-	require("languages.bash"),
-	require("languages.yaml"),
-	require("languages.json"),
-	require("languages.xml"),
-	require("languages.markdown"),
-	require("languages.css"),
+	require("liyua.languages.kotlin"),
+	require("liyua.languages.lua"),
+	require("liyua.languages.latex"),
+	require("liyua.languages.ts"),
+	require("liyua.languages.java"),
+	require("liyua.languages.hyprlang"),
+	require("liyua.languages.bash"),
+	require("liyua.languages.yaml"),
+	require("liyua.languages.json"),
+	require("liyua.languages.xml"),
+	require("liyua.languages.markdown"),
+	require("liyua.languages.css"),
 }
 
-local utils = require("utils")
+local utils = require("liyua.utils")
 
 local M = {
 	fts = {},

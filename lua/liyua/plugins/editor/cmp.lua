@@ -32,7 +32,7 @@ return {
 			---@diagnostic disable-next-line: missing-fields
 			formatting = {
 				format = function(entry, vim_item)
-					vim_item.kind = string.format("%s %s", require("utils").kind_icons[vim_item.kind], vim_item.kind)
+					vim_item.kind = string.format("%s %s", require("liyua.utils").kind_icons[vim_item.kind], vim_item.kind)
 					if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= "" then
 						vim_item.menu = entry.completion_item.detail
 					else

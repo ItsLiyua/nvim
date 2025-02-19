@@ -1,4 +1,4 @@
-return require("api.language").new({
+return require("liyua.api.language").new({
 	ft = { "kotlin" },
 	treesitter = "kotlin",
 	formatters = {

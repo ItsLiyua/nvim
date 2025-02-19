@@ -1,4 +1,4 @@
-return require("api.language").new({
+return require("liyua.api.language").new({
 	ft = { "java" },
 	treesitter = "java",
 	formatters = { ["google-java-format"] = {} },

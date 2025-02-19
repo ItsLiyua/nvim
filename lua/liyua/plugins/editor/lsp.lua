@@ -1,10 +1,10 @@
 return {
 	"neovim/nvim-lspconfig",
-	ft = require("language_parser").lsp_filetypes,
+	ft = require("liyua.language_parser").lsp_filetypes,
 	config = function()
 		local lspconfig = require("lspconfig")
-		local lsps = require("language_parser").lsp_configs
-		local base_config = require("lsp_utils").base_config
+		local lsps = require("liyua.language_parser").lsp_configs
+		local base_config = require("liyua.lsp_utils").base_config
 
 		for _, lsp in pairs(lsps) do
 			local cfg = lsp.config
@@ -13,7 +13,7 @@ return {
 			end
 
 			lspconfig[lsp.name].setup(vim.tbl_deep_extend("force", base_config, cfg))
-			require("utils").send_log('Configured LSP "' .. lsp.name .. '"')
+			require("liyua.utils").send_log('Configured LSP "' .. lsp.name .. '"')
 		end
 
 		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
