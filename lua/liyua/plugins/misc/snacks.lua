@@ -15,99 +15,11 @@ return {
 	opts = {
 		animate = { enabled = true },
 		bigfile = require("liyua.snacks.bigfile"),
-		dashboard = {
-			enabled = true,
-			preset = {
-				header = [[
-                                                                     
-       ████ ██████           █████      ██                     
-      ███████████             █████                             
-      █████████ ███████████████████ ███   ███████████   
-     █████████  ███    █████████████ █████ ██████████████   
-    █████████ ██████████ █████████ █████ █████ ████ █████   
-  ███████████ ███    ███ █████████ █████ █████ ████ █████  
- ██████  █████████████████████ ████ █████ █████ ████ ██████ 
- ]],
-				keys = {
-					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-					{ action = "Neotree", desc = "File Manager", icon = " ", key = "t" },
-					{
-						icon = " ",
-						key = "f",
-						desc = "Find File",
-						action = function()
-							require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
-						end,
-					},
-					{
-						icon = " ",
-						key = "g",
-						desc = "Find String",
-						action = function()
-							require("telescope.builtin").live_grep()
-						end,
-					},
-					{
-						icon = " ",
-						key = "r",
-						desc = "Restore session",
-						action = "<cmd>SessionRestore<CR>",
-					},
-					{ icon = " ", key = "r", desc = "Restore Session", section = "session" },
-					{
-						icon = "󰒲 ",
-						key = "l",
-						desc = "Lazy",
-						action = ":Lazy",
-					},
-					{
-						icon = "󱊈 ",
-						key = "m",
-						desc = "Mason",
-						action = ":Mason",
-					},
-					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-				},
-			},
-			sections = {
-				{ section = "header" },
-				{ section = "keys", padding = 1 },
-				{ icon = " ", title = "Projects", section = "projects", padding = 1 },
-				{ icon = " ", title = "Recent Files", section = "recent_files", padding = 1 },
-				{ section = "startup" },
-			},
-		},
+		dashboard = require("liyua.snacks.dashboard"),
 		explorer = { enabled = false },
-		indent = {
-			enabled = true,
-			char = "│",
-			hl = "SnacksIndent",
-			animate = {
-				enabled = vim.fn.has("nvim-0.10") == 1,
-				style = "out",
-				easing = "linear",
-				duration = {
-					step = 20,
-					total = 200,
-				},
-			},
-			filter = function(buf)
-				return vim.g.snacks_indent ~= false
-					and vim.b[buf].snacks_indent ~= false
-					and vim.bo[buf].buftype == ""
-					and not vim.tbl_contains(require("liyua.utils").non_filetypes, vim.bo[buf].filetype)
-			end,
-		},
+		indent = require("liyua.snacks.indent"),
 		image = { enabled = true },
-		input = {
-			enabled = true,
-			icon = " ",
-			icon_hl = "SnacksInputIcon",
-			icon_pos = "left",
-			prompt_pos = "left",
-			win = { style = "input" },
-			expand = true,
-		},
+		input = require("liyua.snacks.input"),
 		lazygit = { enabled = true, configure = true },
 		picker = { enabled = false },
 		notifier = { enabled = false },
