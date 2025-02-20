@@ -1,6 +1,10 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets", "MahanRahmati/blink-nerdfont.nvim" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"MahanRahmati/blink-nerdfont.nvim",
+		"moyiz/blink-emoji.nvim",
+	},
 	version = "*",
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -44,7 +48,7 @@ return {
 		},
 
 		sources = {
-			default = { "snippets", "lazydev", "lsp", "path", "buffer", "nerdfont" },
+			default = { "snippets", "lazydev", "lsp", "path", "buffer", "nerdfont", "emoji" },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
@@ -56,6 +60,15 @@ return {
 					name = "Nerd Fonts",
 					score_offset = 15,
 					opts = { insert = true },
+				},
+				emoji = {
+					module = "blink-emoji",
+					name = "Emoji",
+					score_offset = 15,
+					opts = { insert = true },
+					should_show_items = function()
+						return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
+					end,
 				},
 			},
 			transform_items = function(_, items)
