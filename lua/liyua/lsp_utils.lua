@@ -48,8 +48,6 @@ M.capabilities = vim.tbl_deep_extend("force", M.capabilities, {
 	},
 })
 
-M.capabilities = vim.tbl_deep_extend("force", M.capabilities, require("lsp-file-operations").default_capabilities())
-
 function M.run_all(...)
 	local fns = { ... }
 
