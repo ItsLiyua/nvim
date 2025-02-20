@@ -19,7 +19,7 @@ return {
 				diagnostics = "nvim_lsp",
 				offsets = {
 					{
-						filetype = "neo-tree",
+						filetype = "snacks_layout_box",
 						text = "File Explorer",
 						highlight = "Directory",
 						text_align = "center",

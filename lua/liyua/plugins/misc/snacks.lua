@@ -52,13 +52,34 @@ return {
 			end,
 			desc = "Find project",
 		},
+		{
+			"<C-n>",
+			function()
+				Snacks.explorer.reveal({ auto_close = true })
+			end,
+			desc = "Filetree",
+		},
+		{
+			"<leader>fe",
+			function()
+				Snacks.explorer.reveal()
+			end,
+			desc = "Filetree",
+		},
+		{
+			"<leader>xl",
+			function()
+				Snacks.explorer.reveal()
+			end,
+			desc = "List diagnostics",
+		},
 	},
 	---@class snacks.Config
 	opts = {
 		animate = { enabled = true },
 		bigfile = require("liyua.snacks.bigfile"),
 		dashboard = require("liyua.snacks.dashboard"),
-		explorer = { enabled = false },
+		explorer = { enabled = true, replace_netrw = true },
 		git = { enabled = true },
 		indent = require("liyua.snacks.indent"),
 		image = { enabled = true },
