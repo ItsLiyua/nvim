@@ -4,9 +4,16 @@ return {
 	lazy = false,
 	keys = {
 		{
-			"<leader>v",
+			"<leader>vg",
 			function()
 				Snacks.lazygit.open()
+			end,
+			desc = "Open git UI",
+		},
+		{
+			"<leader>vb",
+			function()
+				Snacks.git.blame_line()
 			end,
 			desc = "Open git UI",
 		},
@@ -17,6 +24,7 @@ return {
 		bigfile = require("liyua.snacks.bigfile"),
 		dashboard = require("liyua.snacks.dashboard"),
 		explorer = { enabled = false },
+		git = { enabled = true },
 		indent = require("liyua.snacks.indent"),
 		image = { enabled = true },
 		input = require("liyua.snacks.input"),

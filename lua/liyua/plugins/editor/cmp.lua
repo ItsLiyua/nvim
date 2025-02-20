@@ -6,6 +6,7 @@ return {
 		"moyiz/blink-emoji.nvim",
 	},
 	version = "*",
+	event = { "BufReadPre", "BufNewFile" },
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {

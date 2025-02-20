@@ -26,7 +26,7 @@ return {
 			{ "<leader>r", group = "Run...", icon = { icon = "", color = "blue" } },
 			{ "<leader>s", group = "Split...", icon = { icon = "", color = "blue" } },
 			{ "<leader>t", group = "Terminal...", icon = { icon = "", color = "blue" } },
-			{ "<leader>v", group = "Open git UI", icon = { icon = "", color = "blue" } },
+			{ "<leader>v", group = "Version Control...", icon = { icon = "", color = "blue" } },
 			{ "<leader>x", group = "Diagnostics...", icon = { icon = "", color = "blue" } },
 		})
 	end,
