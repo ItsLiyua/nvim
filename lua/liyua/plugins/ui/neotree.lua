@@ -9,8 +9,8 @@ return {
 		"antosha417/nvim-lsp-file-operations",
 	},
 	keys = {
-		{ "<C-n>", "<cmd>:Neotree filesystem reveal left<CR>", desc = "Filetree" },
-		{ "<leader>fe", "<cmd>:Neotree filesystem reveal left<CR>", desc = "Filetree" },
+		{ "<C-n>", "<cmd>Neotree filesystem reveal left<CR>", desc = "Filetree" },
+		{ "<leader>fe", "<cmd>Neotree filesystem reveal left<CR>", desc = "Filetree" },
 		{ "<leader>xl", "<cmd>Neotree diagnostics reveal left<CR>", desc = "List diagnostics" },
 	},
 	cmd = { "Neotree" },
@@ -35,6 +35,12 @@ return {
 					event = "file_open_requested",
 					handler = function()
 						require("neo-tree.command").execute({ action = "close" })
+					end,
+				},
+				{
+					event = "file_added",
+					handler = function()
+						require("lazy").load({ plugins = { "new-file-template.nvim" } })
 					end,
 				},
 			},
