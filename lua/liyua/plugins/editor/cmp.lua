@@ -1,91 +1,102 @@
 return {
-	"hrsh7th/nvim-cmp",
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		local cmp = require("cmp")
-		local luasnip = require("luasnip")
-
-		require("luasnip.loaders.from_vscode").lazy_load()
-
-		local cmp_confirm_or_jump = function(select)
-			return cmp.mapping(function(fallback)
-				if cmp.visible() and (cmp.get_selected_entry() ~= nil or select) then
-					cmp.confirm({ select = select })
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
-				else
-					fallback()
-				end
-			end)
-		end
-
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			---@diagnostic disable-next-line: missing-fields
-			formatting = {
-				format = function(entry, vim_item)
-					vim_item.kind = string.format("%s %s", require("liyua.utils").kind_icons[vim_item.kind], vim_item.kind)
-					if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= "" then
-						vim_item.menu = entry.completion_item.detail
+	"saghen/blink.cmp",
+	dependencies = { "rafamadriz/friendly-snippets", "MahanRahmati/blink-nerdfont.nvim" },
+	version = "*",
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	opts = {
+		keymap = {
+			preset = "none",
+			["<C-e>"] = { "hide", "fallback" },
+			["<Tab>"] = {
+				function(cmp)
+					if cmp.snippet_active() then
+						return cmp.accept()
 					else
-						vim_item.menu = ({
-							lazydev = "[LazyDev]",
-							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
-							path = "[Path]",
-							calc = "[Calc]",
-							buffer = "[Buffer]",
-						})[entry.source.name]
+						return cmp.select_and_accept()
 					end
-					return vim_item
 				end,
+				"snippet_forward",
+				"fallback",
 			},
-			mapping = {
-				["<CR>"] = cmp_confirm_or_jump(false),
-				["<Tab>"] = cmp_confirm_or_jump(true),
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
+			["<CR>"] = {
+				function(cmp)
+					if cmp.snippet_active() then
+						return cmp.accept()
 					end
-				end),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-j>"] = cmp.mapping.select_next_item(),
-				["<C-k>"] = cmp.mapping.select_prev_item(),
-				["<C-e>"] = cmp.mapping.abort(),
+				end,
+				"snippet_forward",
+				"fallback",
 			},
-			sources = cmp.config.sources({
-				{ name = "lazydev", group_index = 0 },
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "calc" },
-				{ name = "path" },
-				{
-					name = "buffer",
-					option = {
-						keyword_pattern = [[\k\+]],
+			["<S-Tab>"] = { "snippet_backward", "fallback" },
+			["<Up>"] = { "select_prev", "fallback" },
+			["<Down>"] = { "select_next", "fallback" },
+			["<C-K>"] = { "select_prev", "fallback" },
+			["<C-J>"] = { "select_next", "fallback" },
+			["<C-b>"] = { "scroll_documentation_up", "fallback" },
+			["<C-f>"] = { "scroll_documentation_down", "fallback" },
+			["<C-k>"] = { "show_signature", "hide_signature", "fallback", "snippet_forward" },
+		},
+
+		appearance = {
+			use_nvim_cmp_as_default = true,
+			nerd_font_variant = "mono",
+		},
+
+		sources = {
+			default = { "snippets", "lazydev", "lsp", "path", "buffer", "nerdfont" },
+			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
+				},
+				nerdfont = {
+					module = "blink-nerdfont",
+					name = "Nerd Fonts",
+					score_offset = 15,
+					opts = { insert = true },
+				},
+			},
+			transform_items = function(_, items)
+				return vim.tbl_filter(function(item)
+					return not (
+						item.kind == require("blink.cmp.types").CompletionItemKind.Snippet
+						and item.source_name == "LSP"
+					)
+				end, items)
+			end,
+		},
+
+		completion = {
+			menu = {
+				draw = {
+					columns = {
+						{ "kind_icon", "label", "label_description", "source_name", gap = 1 },
+					},
+					components = {
+						label_description = {
+							width = { max = 50 },
+						},
+						source_name = {
+							text = function(ctx)
+								return "[" .. ctx.source_name .. "]"
+							end,
+						},
 					},
 				},
-			}),
-		})
-	end,
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-calc",
-		"saadparwaiz1/cmp_luasnip",
-		"L3MON4D3/LuaSnip",
-		"rafamadriz/friendly-snippets",
+			},
+			list = {
+				selection = {
+					preselect = false,
+				},
+			},
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 2000,
+			},
+			ghost_text = { enabled = true },
+		},
 	},
+	opts_extend = { "sources.default" },
 }

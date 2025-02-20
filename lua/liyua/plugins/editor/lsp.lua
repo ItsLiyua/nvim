@@ -33,5 +33,6 @@ return {
 			},
 		},
 		"antosha417/nvim-lsp-file-operations",
+		"saghen/blink.cmp",
 	},
 }
