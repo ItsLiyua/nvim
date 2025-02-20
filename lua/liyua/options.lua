@@ -30,4 +30,6 @@ vim.opt.concealcursor = ""
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 20
 
+vim.opt.cursorline = true
+
 vim.diagnostic.config({ virtual_text = true })

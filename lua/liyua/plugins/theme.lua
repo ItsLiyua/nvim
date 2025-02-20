@@ -4,11 +4,8 @@ return {
 	priority = 1000,
 	opts = {
 		transparent_background = true,
-		custom_highlights = function(C)
-			return { all = { IblScope = { fg = C.color3 } } }
-		end,
 		plugins = {
-			dashnoard = true,
+			dashboard = false,
 			dropbar = {
 				enabled = true,
 				colored_text = true,
@@ -20,7 +17,7 @@ return {
 			nvim_cmp = true,
 			noice = true,
 			notify = true,
-			indent_blankline = true,
+			indent_blankline = false,
 			lsp = {
 				enabled = true,
 				virtual_text = {
