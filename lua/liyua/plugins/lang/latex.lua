@@ -49,8 +49,10 @@ return {
 		end,
 	},
 	{
-		"barreiroleo/ltex-extra.nvim",
-		branch = "dev",
-		lazy = true,
+		"icewind/ltex-client.nvim",
+		ft = { "tex" },
+		opts = {
+			user_dictionaries_path = vim.fn.stdpath("data") .. "/ltex_client/dictionaries",
+		},
 	},
 }

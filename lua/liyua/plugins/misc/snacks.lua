@@ -29,7 +29,7 @@ return {
 		image = { enabled = true },
 		input = require("liyua.snacks.input"),
 		lazygit = { enabled = true, configure = true },
-		picker = { enabled = false },
+		picker = require("liyua.snacks.picker"),
 		notifier = { enabled = false },
 		quickfile = { enabled = false },
 		rename = { enabled = true },
