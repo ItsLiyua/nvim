@@ -1,1 +1,4 @@
-return { enabled = true, ui_select = true }
+return {
+	enabled = true,
+	ui_select = true,
+}

@@ -14,10 +14,35 @@ local function setup_lsp_keymaps(_client, bufnr)
 			desc = "Hover",
 		},
 		{ "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Go to declaration" },
-		{ "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", desc = "Go to definition" },
-		{ "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "Go to implementation" },
-		{ "<leader>gr", "<cmd>Telescope lsp_references<CR>", desc = "Go to references" },
-		{ "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Go to type definition" },
+		{
+			"<leader>gd",
+			function()
+				Snacks.picker.lsp_definitions()
+			end,
+			desc = "Go to definition",
+		},
+		{
+			"<leader>gi",
+			function()
+				Snacks.picker.lsp_implementations()
+			end,
+			desc = "Go to implementation",
+		},
+		{
+			"<leader>gr",
+			function()
+				Snacks.picker.lsp_references()
+			end,
+			desc = "Go to references",
+			nowait = true,
+		},
+		{
+			"<leader>gt",
+			function()
+				Snacks.picker.lsp_type_definitions()
+			end,
+			desc = "Go to type definition",
+		},
 		{ "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename (LSP)" },
 		{ "<Leader>dl", "lua vim.diagnostic.open_float()", desc = "Show diagnostics for current line" },
 		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },

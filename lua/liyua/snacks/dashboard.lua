@@ -19,7 +19,7 @@ return {
 				key = "f",
 				desc = "Find File",
 				action = function()
-					require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
+					Snacks.picker.smart()
 				end,
 			},
 			{
@@ -27,7 +27,7 @@ return {
 				key = "g",
 				desc = "Find String",
 				action = function()
-					require("telescope.builtin").live_grep()
+					Snacks.picker.grep()
 				end,
 			},
 			{

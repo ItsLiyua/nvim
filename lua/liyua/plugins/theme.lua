@@ -42,7 +42,7 @@ return {
 			},
 			surround = true,
 			treesitter = true,
-			telescope = { enabled = true, style = "nvchad" },
+			telescope = { enabled = false },
 			trouble = true,
 			which_key = true,
 		},

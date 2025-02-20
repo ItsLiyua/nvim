@@ -15,10 +15,45 @@ return {
 			function()
 				Snacks.git.blame_line()
 			end,
-			desc = "Open git UI",
+			desc = "Git blame for line",
+		},
+		{
+			"<leader><leader>",
+			function()
+				Snacks.picker.smart()
+			end,
+			desc = "Smart find files or buffers",
+		},
+		{
+			"<leader>ff",
+			function()
+				Snacks.picker.files()
+			end,
+			desc = "Find files",
+		},
+		{
+			"<leader>fg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Find String",
+		},
+		{
+			"<leader>fc",
+			function()
+				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+			end,
+			desc = "Find config file",
+		},
+		{
+			"<leader>fp",
+			function()
+				Snacks.picker.projects()
+			end,
+			desc = "Find project",
 		},
 	},
-	---@type snacks.Config
+	---@class snacks.Config
 	opts = {
 		animate = { enabled = true },
 		bigfile = require("liyua.snacks.bigfile"),

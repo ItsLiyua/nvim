@@ -19,10 +19,6 @@ return {
 					cmd = { "Mason", "MasonInstall" },
 					config = true,
 					build = ":MasonUpdate",
-					dependencies = {
-						"nvim-telescope/telescope.nvim",
-						dependencies = { "nvim-lua/plenary.nvim" },
-					},
 				},
 			},
 		},

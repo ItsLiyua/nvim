@@ -38,11 +38,5 @@ return {
 			},
 		},
 	},
-	dependencies = {
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-		},
-		"nvim-tree/nvim-web-devicons",
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 }

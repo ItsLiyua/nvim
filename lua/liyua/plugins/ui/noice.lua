@@ -3,7 +3,14 @@ return {
 	event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
 	keys = {
 		{ "n", "<leader>nd", "<cmd>Noice dismiss<CR>", desc = "Dismiss notification" },
-		{ "n", "<leader>nh", "<cmd>Noice telescope<CR>", desc = "View recent notifications" },
+		{
+			"n",
+			"<leader>nh",
+			function()
+				Snacks.picker.notifications()
+			end,
+			desc = "View recent notifications",
+		},
 		{ "n", "<leader>nl", "<cmd>Noice last<CR>", desc = "View recent notifications" },
 		{
 			"<leader>nD",
