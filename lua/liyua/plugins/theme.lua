@@ -13,7 +13,7 @@ return {
 			lazy = true,
 			mason = true,
 			markdown = true,
-			neotree = true,
+			neotree = false,
 			nvim_cmp = true,
 			noice = true,
 			notify = true,

@@ -13,7 +13,14 @@ return {
  ]],
 		keys = {
 			{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-			{ action = "Neotree", desc = "File Manager", icon = " ", key = "t" },
+			{
+				action = function()
+					Snacks.explorer.reveal()
+				end,
+				desc = "File Manager",
+				icon = " ",
+				key = "t",
+			},
 			{
 				icon = " ",
 				key = "f",
