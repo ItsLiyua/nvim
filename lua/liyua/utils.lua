@@ -17,6 +17,8 @@ M.non_filetypes = {
 	"dashboard",
 	"lazy",
 	"mason",
+	"noice",
+	"notify",
 }
 
 M.kind_icons = {

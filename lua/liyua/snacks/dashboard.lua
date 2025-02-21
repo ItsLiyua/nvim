@@ -1,3 +1,19 @@
+-- TODO: Fix this broken autocmd:
+
+-- vim.api.nvim_create_autocmd("BufDelete", {
+-- 	callback = function(event)
+-- 		local buffers = 0
+-- 		for _, buf in pairs(vim.api.nvim_list_bufs()) do
+-- 			local ft = vim.bo[buf].filetype
+-- 			if ft ~= "" and ft ~= nil and not vim.list_contains(require("liyua.utils").non_filetypes, ft) then
+-- 				buffers = buffers + 1
+-- 			end
+-- 		end
+-- 		if buffers <= 1 then
+-- 			Snacks.dashboard().current.open()
+-- 		end
+-- 	end,
+-- })
 return {
 	enabled = true,
 	preset = {
