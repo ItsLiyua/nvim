@@ -1,15 +1,22 @@
 local M = {}
 
 ---@diagnostic disable-next-line: unused-local
-local function setup_lsp_keymaps(_client, bufnr)
-	require("which-key").add(vim.tbl_map(function(mapping)
+M.setup_lsp_keymaps = function(_client, bufnr)
+	local keys = vim.tbl_map(function(mapping)
 		return vim.tbl_extend("force", mapping, { buffer = bufnr })
 	end, {
 		{
 			"K",
 			function()
-				---@diagnostic disable-next-line: redundant-parameter
-				vim.lsp.buf.hover({ border = "rounded" })
+				local on_node = vim.treesitter.get_node({ ignore_injections = true })
+				if on_node then
+					if on_node:type() == "string_content" then
+						require("patterns").actions.hover()
+					else
+						---@diagnostic disable-next-line: redundant-parameter
+						vim.lsp.buf.hover({ border = "rounded" })
+					end
+				end
 			end,
 			desc = "Hover",
 		},
@@ -46,7 +53,15 @@ local function setup_lsp_keymaps(_client, bufnr)
 		{ "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename (LSP)" },
 		{ "<Leader>dl", "lua vim.diagnostic.open_float()", desc = "Show diagnostics for current line" },
 		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },
-	}))
+	})
+
+	for _, key in pairs(keys) do
+		local mode = key.mode or "n"
+		local combination = key[1]
+		local action = key[2]
+		local desc = key.desc
+		vim.keymap.set(mode, combination, action, { desc = desc, buffer = bufnr })
+	end
 end
 local function setup_document_highlight(client)
 	if not client.supports_method("textDocument/documentHighlight") then
@@ -58,7 +73,7 @@ end
 function M.on_attach(client, bufnr)
 	vim.bo.omnifunc = "v:lua.vim.lsp.omninc"
 
-	setup_lsp_keymaps()
+	M.setup_lsp_keymaps()
 	setup_document_highlight(client)
 end
 

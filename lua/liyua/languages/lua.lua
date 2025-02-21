@@ -14,6 +14,14 @@ return require("liyua.api.language").new({
 						telemetry = false,
 					},
 				},
+				on_attach = function(client, bufnr)
+					local lsp_utils = require("liyua.lsp_utils")
+					lsp_utils.on_attach(client, bufnr)
+					vim.defer_fn(function()
+						-- TODO: Maybe find a workaround for this or something
+						lsp_utils.setup_lsp_keymaps(client, bufnr)
+					end, 2000)
+				end,
 			},
 			format = false,
 		},
