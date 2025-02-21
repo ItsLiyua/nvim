@@ -82,7 +82,7 @@ return {
 		},
 	},
 	dependencies = {
-		"rcarriga/nvim-notify",
+		{ "rcarriga/nvim-notify", opts = { max_width = 75 } },
 		"MunifTanjim/nui.nvim",
 	},
 }
