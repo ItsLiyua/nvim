@@ -55,7 +55,7 @@ return {
 		{
 			"<C-n>",
 			function()
-				Snacks.explorer.reveal({ auto_close = true })
+				Snacks.explorer.reveal()
 			end,
 			desc = "Filetree",
 		},
@@ -69,7 +69,7 @@ return {
 		{
 			"<leader>xl",
 			function()
-				Snacks.explorer.reveal()
+				Snacks.picker.diagnostics()
 			end,
 			desc = "List diagnostics",
 		},
