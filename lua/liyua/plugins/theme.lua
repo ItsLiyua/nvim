@@ -46,6 +46,15 @@ return {
 			trouble = true,
 			which_key = true,
 		},
+		custom_highlights = function(C)
+			return {
+				all = {
+					IlluminatedWordText = { link = "CursorLine" },
+					IlluminatedWordWrite = { link = "CursorLine" },
+					IlluminatedWordRead = { link = "CursorLine" },
+				},
+			}
+		end,
 	},
 	init = function()
 		vim.cmd.colorscheme("neopywal-dark")
