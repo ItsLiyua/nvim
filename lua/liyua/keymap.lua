@@ -7,9 +7,9 @@ k.set("n", "<leader>mc", "<cmd>nohl<CR>", { desc = "Clear search" })
 k.set("n", "<leader>qq", "<cmd>wa<CR><cmd>q<CR>", { desc = "Save all buffers and exit" })
 
 k.set({ "n", "i" }, "<C-+>", "<C-a>", { desc = "Increment number" })
-k.set("n", "<leader>m+", "<C-a>", { desc = "Increment number" })
+k.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 k.set({ "n", "i" }, "<C-->", "<C-x>", { desc = "Decrement number" })
-k.set("n", "<leader>m-", "<C-x>", { desc = "Decrement number" })
+k.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 k.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split vertically" })
 k.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split horizontally" })

@@ -14,11 +14,17 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 })
 
 M.non_filetypes = {
+	"TelescopePrompt",
 	"dashboard",
 	"lazy",
 	"mason",
 	"noice",
 	"notify",
+	"qf",
+	"spectre_panel",
+	"tsplayground",
+	"undotree",
+	"undotreeDiff",
 }
 
 M.kind_icons = {
