@@ -19,6 +19,7 @@ return {
 					cmd = { "Mason", "MasonInstall" },
 					opts = { ui = { border = "rounded" } },
 					build = ":MasonUpdate",
+					keys = { { "<leader>mm", "<cmd>Mason<CR>", desc = "Open mason UI" } },
 				},
 			},
 		},

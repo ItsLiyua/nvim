@@ -23,3 +23,6 @@ k.set("n", "<C-h>", "<cmd>wincmd h<CR>", { desc = "Move to left split" })
 k.set("n", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Move to bottom split" })
 k.set("n", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Move to top split" })
 k.set("n", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Move to right split" })
+
+k.set("n", "<leader>ml", "<cmd>Lazy<CR>", { desc = "Open lazy UI" })
+k.set("n", "<leader>mt", "~h", { desc = "Toggle case" })
