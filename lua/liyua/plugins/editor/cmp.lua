@@ -49,13 +49,21 @@ return {
 		},
 
 		sources = {
-			default = { "snippets", "lazydev", "lsp", "path", "buffer", "nerdfont", "emoji" },
+			default = {
+				"snippets",
+				--[["lazydev",]]
+				"lsp",
+				"path",
+				"buffer",
+				"nerdfont",
+				"emoji",
+			},
 			providers = {
-				lazydev = {
-					name = "LazyDev",
-					module = "lazydev.integrations.blink",
-					score_offset = 100,
-				},
+				-- lazydev = {
+				-- 	name = "LazyDev",
+				-- 	module = "lazydev.integrations.blink",
+				-- 	score_offset = 100,
+				-- },
 				nerdfont = {
 					module = "blink-nerdfont",
 					name = "Nerd Fonts",

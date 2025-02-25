@@ -32,4 +32,6 @@ vim.opt.sidescrolloff = 20
 
 vim.opt.cursorline = true
 
+vim.opt.autoread = true
+
 vim.diagnostic.config({ virtual_text = true })

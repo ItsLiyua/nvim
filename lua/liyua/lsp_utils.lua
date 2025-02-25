@@ -1,23 +1,26 @@
 local M = {}
 
+M.hover = function()
+	require("patterns").actions.hover()
+	local ok, on_node = pcall(function()
+		vim.treesitter.get_node({ ignore_injections = true })
+	end)
+	if on_node then
+		if ok and (on_node:type() == "string_content" or on_node:type() == "string_literal") then
+			require("patterns").actions.hover()
+		else
+			---@diagnostic disable-next-line: redundant-parameter
+			vim.lsp.buf.hover({ border = "rounded" })
+		end
+	end
+end
+
 ---@diagnostic disable-next-line: unused-local
 M.setup_lsp_keymaps = function(_client, bufnr)
-	local keys = vim.tbl_map(function(mapping)
-		return vim.tbl_extend("force", mapping, { buffer = bufnr })
-	end, {
+	local keys = {
 		{
 			"K",
-			function()
-				local on_node = vim.treesitter.get_node({ ignore_injections = true })
-				if on_node then
-					if on_node:type() == "string_content" then
-						require("patterns").actions.hover()
-					else
-						---@diagnostic disable-next-line: redundant-parameter
-						vim.lsp.buf.hover({ border = "rounded" })
-					end
-				end
-			end,
+			M.hover,
 			desc = "Hover",
 		},
 		{ "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Go to declaration" },
@@ -53,14 +56,15 @@ M.setup_lsp_keymaps = function(_client, bufnr)
 		{ "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename (LSP)" },
 		{ "<Leader>dl", "lua vim.diagnostic.open_float()", desc = "Show diagnostics for current line" },
 		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions", mode = { "v", "n" } },
-	})
+	}
 
 	for _, key in pairs(keys) do
 		local mode = key.mode or "n"
 		local combination = key[1]
 		local action = key[2]
 		local desc = key.desc
-		vim.keymap.set(mode, combination, action, { desc = desc, buffer = bufnr })
+		local nw = key.nowait or false
+		vim.keymap.set(mode, combination, action, { desc = desc, buffer = bufnr, nowait = nw, remap = true })
 	end
 end
 local function setup_document_highlight(client)
