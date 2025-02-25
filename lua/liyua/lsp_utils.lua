@@ -8,11 +8,7 @@ end
 ---@diagnostic disable-next-line: unused-local
 M.setup_lsp_keymaps = function(_client, bufnr)
 	local keys = {
-		{
-			"K",
-			M.hover,
-			desc = "Hover",
-		},
+		{ "K", M.hover, desc = "Hover" },
 		{ "<leader>gD", vim.lsp.buf.declaration, desc = "Go to declaration" },
 		{ "<leader>gd", Snacks.picker.lsp_definitions, desc = "Go to definition" },
 		{ "<leader>gi", Snacks.picker.lsp_implementations, desc = "Go to implementation" },
