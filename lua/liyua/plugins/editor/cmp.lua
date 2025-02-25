@@ -51,7 +51,6 @@ return {
 		sources = {
 			default = {
 				"snippets",
-				--[["lazydev",]]
 				"lsp",
 				"path",
 				"buffer",
@@ -59,21 +58,21 @@ return {
 				"emoji",
 			},
 			providers = {
-				-- lazydev = {
-				-- 	name = "LazyDev",
-				-- 	module = "lazydev.integrations.blink",
-				-- 	score_offset = 100,
-				-- },
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
+				},
 				nerdfont = {
 					module = "blink-nerdfont",
 					name = "Nerd Fonts",
-					score_offset = 15,
+					-- score_offset = 15,
 					opts = { insert = true },
 				},
 				emoji = {
 					module = "blink-emoji",
 					name = "Emoji",
-					score_offset = 15,
+					-- score_offset = 15,
 					opts = { insert = true },
 					should_show_items = function()
 						return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
