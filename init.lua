@@ -26,7 +26,6 @@ require("lazy").setup("liyua.plugins", {
 		enabled = true,
 		notify = false,
 	},
-	change_detection = {
-		notify = false,
-	},
+	change_detection = { notify = false },
+	ui = { border = "rounded" },
 })

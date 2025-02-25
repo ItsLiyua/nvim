@@ -17,7 +17,7 @@ return {
 				{
 					"williamboman/mason.nvim",
 					cmd = { "Mason", "MasonInstall" },
-					config = true,
+					opts = { ui = { border = "rounded" } },
 					build = ":MasonUpdate",
 				},
 			},
