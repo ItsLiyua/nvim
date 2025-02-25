@@ -1,3 +1,8 @@
+-- local langs = {}
+
+-- for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/plugins", [[v:val =~ '\.lua$']])) do
+-- 	langs[#langs + 1] = require("plugins." .. file:gsub("%.lua$", ""))
+-- end
 local langs = {
 	require("liyua.languages.kotlin"),
 	require("liyua.languages.lua"),
