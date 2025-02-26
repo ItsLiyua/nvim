@@ -25,12 +25,7 @@ return {
 				"fallback",
 			},
 			["<CR>"] = {
-				function(cmp)
-					if cmp.snippet_active() then
-						return cmp.accept()
-					end
-				end,
-				"snippet_forward",
+				"accept",
 				"fallback",
 			},
 			["<S-Tab>"] = { "snippet_backward", "fallback" },
