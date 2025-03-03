@@ -8,6 +8,7 @@ local langs = {
 	require("liyua.languages.latex"),
 	require("liyua.languages.lua"),
 	require("liyua.languages.markdown"),
+	require("liyua.languages.python"),
 	require("liyua.languages.ts"),
 	require("liyua.languages.xml"),
 	require("liyua.languages.yaml"),

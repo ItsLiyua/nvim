@@ -82,7 +82,7 @@ return {
 		explorer = { enabled = true, replace_netrw = true },
 		git = { enabled = true },
 		indent = require("liyua.snacks.indent"),
-		image = { enabled = true },
+		image = { enabled = false },
 		input = require("liyua.snacks.input"),
 		lazygit = { enabled = true, configure = true },
 		picker = require("liyua.snacks.picker"),
