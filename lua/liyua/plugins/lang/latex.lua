@@ -8,6 +8,10 @@ return {
 				math_fracs = false,
 				accents = true,
 			}
+			vim.g.vimtex_view_forward_search_on_start = false
+			vim.g.vimtex_compiler_latexmk = {
+				aux_dir = vim.fn.stdpath("cache") .. "/vimtex",
+			}
 			vim.g.vimtex_syntax_custom_cmds = {}
 			vim.g.vimtex_syntax_custom_cmds_with_concealed_delims = {
 				{
