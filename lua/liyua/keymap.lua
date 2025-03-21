@@ -1,6 +1,4 @@
 local k = vim.keymap
-k.set("n", "q:", "<Nop>") -- Unmap regular command history
-k.set("n", "nh", "<Nop>")
 
 k.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 k.set("n", "<leader>mc", "<cmd>nohl<CR>", { desc = "Clear search" })
@@ -26,3 +24,8 @@ k.set("n", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Move to right split" })
 
 k.set("n", "<leader>ml", "<cmd>Lazy<CR>", { desc = "Open lazy UI" })
 k.set("n", "<leader>mt", "~h", { desc = "Toggle case" })
+
+k.set({ "n", "v", "i" }, "<Up>", "<Nop>", { desc = "Disable arrow keys" })
+k.set({ "n", "v", "i" }, "<Down>", "<Nop>", { desc = "Disable arrow keys" })
+k.set({ "n", "v", "i" }, "<Left>", "<Nop>", { desc = "Disable arrow keys" })
+k.set({ "n", "v", "i" }, "<Right>", "<Nop>", { desc = "Disable arrow keys" })

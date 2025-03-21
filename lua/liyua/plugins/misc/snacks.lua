@@ -91,7 +91,7 @@ return {
 		rename = { enabled = true },
 		scope = { enabled = false },
 		scroll = { enabled = false },
-		statuscolumn = require("liyua.snacks.statuscolumn"),
+		-- statuscolumn = require("liyua.snacks.statuscolumn"),
 		words = { enabled = false },
 	},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
