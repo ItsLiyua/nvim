@@ -8,6 +8,14 @@ return {
 		},
 		config = function()
 			require("markview").setup({
+				-- on_enable = {
+				-- 	conceallevel = 2,
+				-- 	concealcursor = "",
+				-- },
+				-- on_disable = {
+				-- 	conceallevel = 0,
+				-- 	concealcursor = "",
+				-- },
 				latex = {
 					enable = true,
 					inlines = { enable = true },
