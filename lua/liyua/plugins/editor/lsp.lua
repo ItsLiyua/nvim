@@ -15,12 +15,6 @@ return {
 			lspconfig[lsp.name].setup(vim.tbl_deep_extend("force", base_config, cfg))
 			require("liyua.utils").send_log('Configured LSP "' .. lsp.name .. '"')
 		end
-
-		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
 	end,
 	dependencies = {
 		{

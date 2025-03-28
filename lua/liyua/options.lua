@@ -35,4 +35,16 @@ vim.opt.cursorline = true
 
 vim.opt.autoread = true
 
-vim.diagnostic.config({ virtual_text = true })
+local sev = vim.diagnostic.severity
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = true,
+	signs = {
+		text = {
+			[sev.ERROR] = "󰅚 ",
+			[sev.WARN] = "󰀪 ",
+			[sev.INFO] = " ",
+			[sev.HINT] = "󰌶 ",
+		},
+	},
+})
