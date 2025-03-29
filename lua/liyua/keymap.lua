@@ -29,3 +29,12 @@ k.set({ "n", "v", "i" }, "<Up>", "<Nop>", { desc = "Disable arrow keys" })
 k.set({ "n", "v", "i" }, "<Down>", "<Nop>", { desc = "Disable arrow keys" })
 k.set({ "n", "v", "i" }, "<Left>", "<Nop>", { desc = "Disable arrow keys" })
 k.set({ "n", "v", "i" }, "<Right>", "<Nop>", { desc = "Disable arrow keys" })
+
+k.set("i", "<BS>", function()
+	local line = vim.api.nvim_get_current_line()
+	if line:match("^%s*$") and not line:match("^$") then
+		return "<C-u><C-u>"
+	else
+		return "<C-h>"
+	end
+end, { silent = true, expr = true, desc = "Delete whole line if empty" })
