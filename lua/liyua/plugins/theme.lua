@@ -107,6 +107,6 @@ return {
 		end,
 	},
 	init = function()
-		vim.cmd.colorscheme("neopywal-dark")
+		vim.cmd.colorscheme("neopywal")
 	end,
 }
