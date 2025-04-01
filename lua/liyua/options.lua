@@ -48,3 +48,22 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+	callback = function()
+		vim.diagnostic.config({ virtual_lines = false })
+	end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+	callback = function()
+		vim.diagnostic.config({ virtual_lines = true })
+	end,
+})
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
+vim.opt.foldnestmax = 4
+vim.opt.foldcolumn = "0"
