@@ -8,7 +8,7 @@ return require("liyua.api.language").new({
 			config = {
 				cmd = {
 					vim.fn.stdpath("data") .. "/mason/packages/jdtls/jdtls",
-					"--java-executable=/usr/lib64/jvm/java-21-openjdk/bin/java",
+					"--java-executable=/usr/lib64/jvm/java-21-temurin/bin/java",
 				},
 				settings = {
 					java = {
