@@ -10,6 +10,13 @@ return {
 		},
 	},
 	opts = {
+		window = {
+			width = 1,
+			options = {
+				signcolumn = "no",
+				foldcolumn = "0",
+			},
+		},
 		kitty = {
 			enabled = true,
 			font = "+4",
