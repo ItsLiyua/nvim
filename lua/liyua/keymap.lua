@@ -38,3 +38,7 @@ k.set("i", "<BS>", function()
 		return "<C-h>"
 	end
 end, { silent = true, expr = true, desc = "Delete whole line if empty" })
+
+k.set("n", "<leader>d", function()
+	vim.diagnostic.open_float({ border = "rounded" }, { focus = true, scole = "cursor" })
+end, { desc = "Show diagnostics for current line" })

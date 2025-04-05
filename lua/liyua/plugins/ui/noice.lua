@@ -59,10 +59,11 @@ return {
 				filter = {
 					event = "lsp",
 					kind = "progress",
-					-- cond = function(message)
-					-- 	local client = vim.tbl_get(message.opts, "progress", "client")
-					-- 	return client == "ltex" or client == "jdtls"
-					-- end,
+					cond = function(_)
+						return true
+						-- local client = vim.tbl_get(message.opts, "progress", "client")
+						-- return client == "lua_ls"
+					end,
 				},
 				opts = { skip = true },
 			},

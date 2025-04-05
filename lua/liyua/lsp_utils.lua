@@ -15,7 +15,6 @@ M.setup_lsp_keymaps = function(_client, bufnr)
 		{ "<leader>gr", Snacks.picker.lsp_references, desc = "Go to references", nowait = true },
 		{ "<leader>gt", Snacks.picker.lsp_type_definitions, desc = "Go to type definition" },
 		{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename (LSP)" },
-		{ "<Leader>dl", vim.diagnostic.open_float, desc = "Show diagnostics for current line" },
 		{ "<leader>ca", vim.lsp.buf.code_action, desc = "Code actions", mode = { "v", "n" } },
 	}
 

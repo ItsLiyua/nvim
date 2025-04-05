@@ -38,7 +38,7 @@ vim.opt.autoread = true
 local sev = vim.diagnostic.severity
 vim.diagnostic.config({
 	virtual_text = false,
-	virtual_lines = true,
+	virtual_lines = false,
 	signs = {
 		text = {
 			[sev.ERROR] = "󰅚 ",
@@ -47,17 +47,6 @@ vim.diagnostic.config({
 			[sev.HINT] = "󰌶 ",
 		},
 	},
-})
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-	callback = function()
-		vim.diagnostic.config({ virtual_lines = false })
-	end,
-})
-vim.api.nvim_create_autocmd("InsertLeave", {
-	callback = function()
-		vim.diagnostic.config({ virtual_lines = true })
-	end,
 })
 
 vim.opt.foldmethod = "expr"
