@@ -22,7 +22,7 @@ return {
 			["<C-J>"] = { "select_next", "fallback" },
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
-			["<C-k>"] = { "show_signature", "hide_signature", "fallback", "snippet_forward" },
+			["<C-s>"] = { "show_signature", "hide_signature", "fallback", "snippet_forward" },
 		},
 
 		appearance = {
